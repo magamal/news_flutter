@@ -1,0 +1,69 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "/consultation/request",
+        "headers": {
+          "SCENARIO_KEY": {
+            "matches": "DA-215_.*"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "[\n  {\n    \"requestId\": 1234,\n    \"imageUri\": \"150\",\n  \"thumbnailUri\": \"150\",\n    \"type\": \"wheat\",\n    \"service\": \"agricultural\",\n    \"status\": \"success\"\n  },\n  {\n    \"requestId\": 1235,\n    \"imageUri\": \"150\",\n  \"thumbnailUri\": \"150\",\n    \"type\": \"rice\",\n    \"service\": \"agricultural\",\n    \"status\": \"success\"\n  },\n  {\n    \"requestId\": 1236,\n    \"imageUri\": \"150\",\n  \"thumbnailUri\": \"150\",\n    \"type\": \"wheat\",\n    \"service\": \"agricultural\",\n    \"status\": \"not_confident\"\n  }\n]",
+        "headers": {
+          "Content-Type": "application/json",
+          "SCENARIO_KEY": "{{request.headers.SCENARIO_KEY}}"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "urlPathPattern": "/user/prescription/[0-9]+",
+        "headers": {
+          "SCENARIO_KEY": {
+            "or": [
+              {
+                "equalTo": "DA-215_2"
+              },
+              {
+                "equalTo": "DA-215_3"
+              }
+            ]
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": " { \"requestId\": 1234,\n  \"diseaseName\": \"صدأ القمح\",\n  \"imageUri\": \"image.jpeg\",\n  \"prescriptionAudioUri\":\n      \"test_audio.mp3\",\n  \"prescriptionText\": \"PRESCRIPTION_TEXT\"}",
+        "headers": {
+          "Content-Type": "application/json",
+          "SCENARIO_KEY": "{{request.headers.SCENARIO_KEY}}"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "urlPathPattern": "/consultation/request/[0-9]+",
+        "headers": {
+          "SCENARIO_KEY": {
+            "equalTo": "DA-215_5"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": " {\n  \"requestId\": 1236,\n  \"imageUri\": \"150\",\n  \"thumbnailUri\": \"150\",\n  \"type\": \"wheat\",\n  \"service\": \"agricultural\",\n  \"status\": \"not_confident\"\n}",
+        "headers": {
+          "Content-Type": "application/json",
+          "SCENARIO_KEY": "{{request.headers.SCENARIO_KEY}}"
+        }
+      }
+    }
+  ]
+}
+

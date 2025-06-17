@@ -1,0 +1,237 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "GET",
+        "urlPathPattern": "/user/active/crops/.+",
+        "headers": {
+          "SCENARIO_KEY": {
+            "matches": "DA-417_.*"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"cropName\": \"wheat\",\n  \"week\": 2,\n  \"month\": 11\n}",
+        "headers": {
+          "Content-Type": "application/json",
+          "SCENARIO_KEY": "{{request.headers.SCENARIO_KEY}}"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "PUT",
+        "url": "/user/active/crops",
+        "headers": {
+          "SCENARIO_KEY": {
+            "matches": "DA-417_6"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "SCENARIO_KEY": "{{request.headers.SCENARIO_KEY}}"
+        }
+      }
+    },
+    {
+      "priority": 1,
+      "requiredScenarioState": "Started",
+      "request": {
+        "method": "GET",
+        "url": "/user/active/crops",
+        "headers": {
+          "SCENARIO_KEY": {
+            "equalTo": "DA-417_8"
+          },
+          "SCENARIO_STATE": {
+            "equalTo": "END"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "[ \"rice\", \"corn\"]",
+        "headers": {
+          "Content-Type": "application/json",
+          "SCENARIO_KEY": "{{request.headers.SCENARIO_KEY}}"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "urlPathPattern": "/user/active/crops/(wheat|rice|corn|barely)",
+        "headers": {
+          "SCENARIO_KEY": {
+            "matches": "DA-417_.*"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "SCENARIO_KEY": "{{request.headers.SCENARIO_KEY}}"
+        }
+      }
+    },
+    {
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "url": "/user/active/crops",
+        "headers": {
+          "SCENARIO_KEY": {
+            "equalTo": "DA-417_9"
+          },
+          "SCENARIO_STATE": {
+            "equalTo": "END"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "[]",
+        "headers": {
+          "Content-Type": "application/json",
+          "SCENARIO_KEY": "{{request.headers.SCENARIO_KEY}}"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "PUT",
+        "urlPathPattern": "/user/governorate/.+",
+        "headers": {
+          "SCENARIO_KEY": {
+            "matches": "DA-417_.*"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"governorateArabic\": \"الجيزة\"}",
+        "headers": {
+          "Content-Type": "application/json",
+          "SCENARIO_KEY": "{{request.headers.SCENARIO_KEY}}"
+        }
+      }
+    },
+    {
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "url": "/user/governorate",
+        "headers": {
+          "SCENARIO_KEY": {
+            "matches": "DA-417_10"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"governorateArabic\": \"الجيزة\"}",
+        "headers": {
+          "Content-Type": "application/json",
+          "SCENARIO_KEY": "{{request.headers.SCENARIO_KEY}}"
+        }
+      }
+    },
+    {
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "url": "/location/json",
+        "headers": {
+          "SCENARIO_KEY": {
+            "equalTo": "DA-417_10"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"regionName\": \"\"}",
+        "headers": {
+          "Content-Type": "application/json",
+          "SCENARIO_KEY": "{{request.headers.SCENARIO_KEY}}"
+        }
+      }
+    },
+    {
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "url": "/user/active/crops",
+        "headers": {
+          "SCENARIO_KEY": {
+            "or": [
+              {
+                "equalTo": "DA-417_1"
+              },
+              {
+                "equalTo": "DA-417_2"
+              }
+            ]
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "[]",
+        "headers": {
+          "Content-Type": "application/json",
+          "SCENARIO_KEY": "{{request.headers.SCENARIO_KEY}}"
+        }
+      }
+    },
+    {
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "url": "/user/governorate",
+        "headers": {
+          "SCENARIO_KEY": {
+            "or": [
+              {
+                "equalTo": "DA-417_1"
+              },
+              {
+                "equalTo": "DA-417_3"
+              }
+            ]
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"governorateArabic\": \"\"}",
+        "headers": {
+          "Content-Type": "application/json",
+          "SCENARIO_KEY": "{{request.headers.SCENARIO_KEY}}"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "/user/active/crops",
+        "headers": {
+          "SCENARIO_KEY": {
+            "equalTo": "DA-417_7"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "SCENARIO_KEY": "{{request.headers.SCENARIO_KEY}}"
+        }
+      }
+    }
+  ]
+}

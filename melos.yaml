@@ -1,0 +1,14 @@
+name: news_flutter
+packages:
+  - packages/**
+  - packages/app
+
+scripts:
+  generate:
+    run: melos exec dart run build_runner build --delete-conflicting-outputs
+  rebuild:
+    exec: |
+      flutter clean
+      flutter pub get
+      dart run build_runner build --delete-conflicting-outputs
+    description: rebuild project and generate files

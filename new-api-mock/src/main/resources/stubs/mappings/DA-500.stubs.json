@@ -1,0 +1,109 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "/consultation/request",
+        "headers": {
+          "SCENARIO_KEY": {
+            "matches": "DA-500_.*"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "[\n  {\n    \"requestId\": 1234,\n    \"imageUri\": \"150\",\n  \"thumbnailUri\": \"150\",\n    \"type\": \"wheat\",\n    \"service\": \"agricultural\",\n    \"status\": \"success\",\n    \"userFeedback\": \"not_voted\"\n  },\n  {\n    \"requestId\": 1235,\n    \"imageUri\": \"150\",\n  \"thumbnailUri\": \"150\",\n    \"type\": \"rice\",\n    \"service\": \"agricultural\",\n    \"status\": \"success\",\n    \"userFeedback\": \"not_voted\"\n  },\n  {\n    \"requestId\": 1236,\n    \"imageUri\": \"150\",\n  \"thumbnailUri\": \"150\",\n    \"type\": \"wheat\",\n    \"service\": \"agricultural\",\n    \"status\": \"not_confident\",\n    \"userFeedback\": \"not_voted\"\n  }\n]",
+        "headers": {
+          "Content-Type": "application/json",
+          "SCENARIO_KEY": "{{request.headers.SCENARIO_KEY}}"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "urlPathPattern": "/user/prescription/.+",
+        "headers": {
+          "SCENARIO_KEY": {
+            "or": [
+              {
+                "equalTo": "DA-500_1"
+              },
+              {
+                "equalTo": "DA-500_2"
+              }
+            ]
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n    \"requestId\": 1234,\n    \"diseaseName\": \"لا يوجد\",\n    \"imageUri\": \"150\",\n    \"prescriptionAudioUri\": \"test_audio.mp3\",\n    \"prescriptionText\": \"لا يوجد مرض بالصورة\",\n    \"userFeedback\": \"not_voted\"\n}",
+        "headers": {
+          "Content-Type": "application/json",
+          "SCENARIO_KEY": "{{request.headers.SCENARIO_KEY}}"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "urlPathPattern": "/user/prescription/.+",
+        "headers": {
+          "SCENARIO_KEY": {
+            "equalTo": "DA-500_3"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n    \"requestId\": 1235,\n    \"diseaseName\": \"لا يوجد\",\n    \"imageUri\": \"150\",\n    \"prescriptionAudioUri\": \"test_audio.mp3\",\n    \"prescriptionText\": \"لا يوجد مرض بالصورة\",\n    \"userFeedback\": \"not_voted\"\n}",
+        "headers": {
+          "Content-Type": "application/json",
+          "SCENARIO_KEY": "{{request.headers.SCENARIO_KEY}}"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "urlPathPattern": "/consultation/request/[0-9]+",
+        "headers": {
+          "SCENARIO_KEY": {
+            "equalTo": "DA-500_4"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n    \"requestId\": 1236,\n    \"imageUri\": \"150\",\n  \"thumbnailUri\": \"150\",\n    \"type\": \"wheat\",\n    \"service\": \"agricultural\",\n    \"status\": \"not_confident\",\n    \"userFeedback\": \"not_voted\"\n}",
+        "headers": {
+          "Content-Type": "application/json",
+          "SCENARIO_KEY": "{{request.headers.SCENARIO_KEY}}"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "urlPathPattern": "/consultation/vote/.*",
+        "headers": {
+          "SCENARIO_KEY": {
+            "matches": "DA-500_.*"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "",
+        "headers": {
+          "Content-Type": "application/json",
+          "SCENARIO_KEY": "{{request.headers.SCENARIO_KEY}}"
+        }
+      }
+    }
+
+
+
+  ]
+}

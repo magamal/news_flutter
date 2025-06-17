@@ -1,0 +1,24 @@
+{
+  "mappings": [
+    {
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "urlPathPattern": "/recommendation/seasonal/(wheat|rice|corn|barely)",
+        "headers": {
+          "SCENARIO_KEY": {
+            "matches": "DA-403_.*"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "[{\n    \"id\":1,\n    \"title\": \"seasonalreco1\",\n    \"description\": \"seasonalrecoDesc1\",\n    \"imageUri\": \"150\",\n    \"audioUri\":null,\n    \"week\": \"الاسبوع الاول\",\n    \"videoUri\":\"test_video.mp4\"\n\n  },\n  {\n    \"id\":2,\n    \"title\": \"seasonalreco2\",\n    \"description\": \"seasonalrecoDesc2\",\n    \"imageUri\": \"150\",\n    \"audioUri\":\n    \"test_audio.mp3\",\n    \"week\": \"الاسبوع الاول\",\n    \"videoUri\":null\n }]",
+        "headers": {
+          "SCENARIO_KEY": "{{request.headers.SCENARIO_KEY}}",
+          "Content-Type": "application/json"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "/signin",
+        "headers": {
+          "SCENARIO_KEY": {
+            "matches": "DA-128.*"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"token\": \"aaaabbbbccccdddd\"}",
+        "headers": {
+          "Content-Type": "application/json",
+          "SCENARIO_KEY": "{{request.headers.SCENARIO_KEY}}"
+        }
+      }
+    },
+    {
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "url": "/user/governorate",
+        "headers": {
+          "SCENARIO_KEY": {
+            "equalTo": "DA-128_1"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"governorateArabic\": \"\"}",
+        "headers": {
+          "Content-Type": "application/json",
+          "SCENARIO_KEY": "{{request.headers.SCENARIO_KEY}}"
+        }
+      }
+    },
+    {
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "url": "/user/governorate",
+        "headers": {
+          "SCENARIO_KEY": {
+            "equalTo": "DA-128_2"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"governorateArabic\": \"قنا\"}",
+        "headers": {
+          "Content-Type": "application/json",
+          "SCENARIO_KEY": "{{request.headers.SCENARIO_KEY}}"
+        }
+      }
+    }
+  ]
+}

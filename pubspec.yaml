@@ -1,0 +1,10 @@
+name: news_app
+description: "A new Flutter project."
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.4.4 <4.0.0'
+
+dependencies:
+  melos: ^6.3.2

@@ -1,0 +1,101 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "POST",
+        "urlPathPattern": "/user/governorate/.+",
+        "headers": {
+          "SCENARIO_KEY": {
+            "matches": "DA-206_.*"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"governorateArabic\": \"قنا\"}",
+        "headers": {
+          "Content-Type": "application/json",
+          "SCENARIO_KEY": "{{request.headers.SCENARIO_KEY}}"
+        }
+      }
+    },
+    {
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "url": "/user/governorate",
+        "headers": {
+          "SCENARIO_KEY": {
+            "matches": "DA-206_.*"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"governorateArabic\": \"\"}",
+        "headers": {
+          "Content-Type": "application/json",
+          "SCENARIO_KEY": "{{request.headers.SCENARIO_KEY}}"
+        }
+      }
+    },
+    {
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "url": "/location/json",
+        "headers": {
+          "SCENARIO_KEY": {
+            "equalTo": "DA-206_2"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"regionName\": \"\"}",
+        "headers": {
+          "Content-Type": "application/json",
+          "SCENARIO_KEY": "{{request.headers.SCENARIO_KEY}}"
+        }
+      }
+    },
+    {
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "url": "/user/active/crops",
+        "headers": {
+          "SCENARIO_KEY": {
+            "matches": "DA-206_.*"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "[]",
+        "headers": {
+          "Content-Type": "application/json",
+          "SCENARIO_KEY": "{{request.headers.SCENARIO_KEY}}"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "/user/active/crops",
+        "headers": {
+          "SCENARIO_KEY": {
+            "matches": "DA-206_.*"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "SCENARIO_KEY": "{{request.headers.SCENARIO_KEY}}"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "mappings": [
+
+    {
+      "request": {
+        "method": "GET",
+        "urlPath": "/top-headlines",
+        "queryParameters": {
+          "country": {
+            "equalTo": "us"
+          },
+          "category": {
+            "equalTo": "business"
+          },
+          "apiKey": {
+            "equalTo": "c575638a539e461c840f0f47d5ea89d7"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"status\":\"ok\",\"totalResults\":5,\"articles\":[{\"title\":\"Article Title 1\",\"author\":\"Author 1\",\"publishedAt\":\"2025-06-01\",\"url\":\"https://example.com/article1\",\"urlToImage\":\"https://example.com/images/img1.jpg\",\"description\":\"Description for article 1\",\"content\":\"Full content of article 1\"},{\"title\":\"Article Title 2\",\"author\":\"Author 2\",\"publishedAt\":\"2025-06-02\",\"url\":\"https://example.com/article2\",\"urlToImage\":\"https://example.com/images/img2.jpg\",\"description\":\"Description for article 2\",\"content\":\"Full content of article 2\"},{\"title\":\"Article Title 3\",\"author\":\"Author 3\",\"publishedAt\":\"2025-06-03\",\"url\":\"https://example.com/article3\",\"urlToImage\":\"https://example.com/images/img3.jpg\",\"description\":\"Description for article 3\",\"content\":\"Full content of article 3\"},{\"title\":\"Article Title 4\",\"author\":\"Author 4\",\"publishedAt\":\"2025-06-04\",\"url\":\"https://example.com/article4\",\"urlToImage\":\"https://example.com/images/img4.jpg\",\"description\":\"Description for article 4\",\"content\":\"Full content of article 4\"},{\"title\":\"Article Title 5\",\"author\":\"Author 5\",\"publishedAt\":\"2025-06-05\",\"url\":\"https://example.com/article5\",\"urlToImage\":\"https://example.com/images/img5.jpg\",\"description\":\"Description for article 5\",\"content\":\"Full content of article 5\"}]}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    }
+  ]
+}
