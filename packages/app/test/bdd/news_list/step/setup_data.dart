@@ -1,4 +1,4 @@
-import 'package:app/src/di/injector.dart';
+import '../../../../../di/lib/di/di/di.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 /// Usage: Setup Data

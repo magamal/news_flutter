@@ -1,0 +1,41 @@
+name: utils
+description: "A new Flutter project."
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.4.4 <4.0.0'
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # current module dependencies
+  cupertino_icons: ^1.0.6
+  get: ^4.6.6
+
+
+
+  # shared
+  get_it: ^7.7.0
+  logger: ^2.0.2+1
+
+
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+  flutter_lints: ^3.0.0
+  build_runner: ^2.4.8
+  #  flutter_gen_runner: ^5.9.0
+  injectable_generator: ^2.4.1
+  analyzer: 6.11.0
+
+
+flutter:
+  generate: true
+  uses-material-design: true

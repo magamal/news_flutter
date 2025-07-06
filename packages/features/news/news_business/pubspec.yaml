@@ -1,4 +1,4 @@
-name: app
+name: news_business
 description: "A new Flutter project."
 
 version: 1.0.0+1
@@ -31,24 +31,15 @@ dependencies:
   retrofit: ">=4.0.0 <5.0.0"
   dio: ^5.5.0+1
 
+  core_domain:
+    path: ../../../core_domain
+
+  app:
+    path: ../../../app
 
   di:
-    path: ../di
+    path: ../../../di
 
-  core_ui:
-    path: ../core_ui
-
-  news_presentation:
-    path: ../features/news/news_presentation
-
-  news_business:
-    path: ../features/news/news_business
-
-  localization:
-    path: ../localization
-
-  media_presentation:
-    path: ../features/media/media_presentation
 
 
 

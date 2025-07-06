@@ -1,4 +1,4 @@
-name: app
+name: media_business
 description: "A new Flutter project."
 
 version: 1.0.0+1
@@ -32,26 +32,6 @@ dependencies:
   dio: ^5.5.0+1
 
 
-  di:
-    path: ../di
-
-  core_ui:
-    path: ../core_ui
-
-  news_presentation:
-    path: ../features/news/news_presentation
-
-  news_business:
-    path: ../features/news/news_business
-
-  localization:
-    path: ../localization
-
-  media_presentation:
-    path: ../features/media/media_presentation
-
-
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -71,3 +51,4 @@ dev_dependencies:
 flutter:
   generate: true
   uses-material-design: true
+
