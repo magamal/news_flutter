@@ -40,6 +40,9 @@ dependencies:
   di:
     path: ../../../di
 
+  news_presentation:
+    path: ../news_presentation
+
 
 
 
