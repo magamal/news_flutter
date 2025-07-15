@@ -32,23 +32,15 @@ dependencies:
   dio: ^5.5.0+1
 
 
-  di:
-    path: ../di
+  di: 1.0.0+1
 
-  core_ui:
-    path: ../core_ui
+  core_ui: 1.0.0+1
 
-  news_presentation:
-    path: ../features/news/news_presentation
+  news_presentation: 1.0.0+1
 
-  news_business:
-    path: ../features/news/news_business
+  localization: 1.0.0+1
 
-  localization:
-    path: ../localization
-
-  media_presentation:
-    path: ../features/media/media_presentation
+  media_presentation: 1.0.0+1
 
 
 

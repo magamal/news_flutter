@@ -8,6 +8,6 @@ import 'injector.config.dart';
   preferRelativeImports: true, // default
   asExtension: false, // default
 )
-Future<void> configureAppDependencies(GetIt getIt, String? environment) async {
+Future<void> configureCoreDomainDependencies(GetIt getIt, String? environment) async {
   await $initGetIt(getIt, environment: environment);
 }

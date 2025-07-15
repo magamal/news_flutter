@@ -27,17 +27,15 @@ dependencies:
   retrofit: ">=4.0.0 <5.0.0"
   dio: ^5.5.0+1
 
-  app:
-    path: ../app
+  app: 1.0.0+1
 
-  news_presentation:
-    path: ../features/news/news_presentation
+  news_presentation: 1.0.0+1
 
-  news_business:
-    path: ../features/news/news_business
+  news_business: 1.0.0+1
 
-  core_ui:
-    path: ../core_ui
+  core_ui: 1.0.0+1
+
+  core_domain: 1.0.0+1
 
 
 

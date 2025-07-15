@@ -30,19 +30,16 @@ dependencies:
   logger: ^2.0.2+1
   retrofit: ">=4.0.0 <5.0.0"
   dio: ^5.5.0+1
+  http_mock_adapter: ^0.6.1
 
 
-  core_ui:
-    path: ../../../core_ui
+  core_ui: 1.0.0+1
 
-  news_business:
-    path: ../news_business
+  news_business: 1.0.0+1
 
-  localization:
-    path: ../../../localization
+  localization: 1.0.0+1
 
-  di:
-    path: ../../../di
+  di: 1.0.0+1
 
 
 
