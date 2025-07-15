@@ -14,8 +14,6 @@ abstract class NewsRemoteDataSourceImpl implements NewsRemoteDataSource {
       {@Named('base_url') String? baseUrl}) = _NewsRemoteDataSourceImpl;
 
   @override
-  // @GET("top-headlines?country=us&category=business&apiKey=c575638a539e461c840f0f47d5ea89d7")
-  // @GET("top-headlines?country=us&category=business")
-  @GET("top-headlines")
+  @GET("top-headlines?country=us&category=business")
   Future<NewsArticlesResponse> fetchNews();
 }

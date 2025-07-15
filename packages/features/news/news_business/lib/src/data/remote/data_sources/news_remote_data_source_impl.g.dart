@@ -34,8 +34,7 @@ class _NewsRemoteDataSourceImpl implements NewsRemoteDataSourceImpl {
     )
         .compose(
           _dio.options,
-          // 'top-headlines?country=us&category=business',
-          'top-headlines',
+          'top-headlines?country=us&category=business',
           queryParameters: queryParameters,
           data: _data,
         )

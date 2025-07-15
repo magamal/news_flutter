@@ -19,10 +19,10 @@ final getIt = GetIt.instance;
 )
 Future<void> configureDependencies({String? environment = Environment.dev}) async {
     // getIt.allowReassignment = true;
+    await core_domain.configureCoreDomainDependencies(getIt, environment);
     await app.configureAppDependencies(getIt, environment);
     await news_presentation.configureNewsPresentationDependencies(getIt, environment);
     await news_business.configureNewsBusinessDependencies(getIt, environment);
-    await core_domain.configureCoreDomainDependencies(getIt, environment);
 }
 
 Future resetDi() async {

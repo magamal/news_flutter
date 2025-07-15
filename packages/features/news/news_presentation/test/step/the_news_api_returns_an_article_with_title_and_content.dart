@@ -1,7 +1,8 @@
 import 'package:di/di/di/di.dart' as di;
+import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:news_business/news_business.dart';
 import 'package:http_mock_adapter/http_mock_adapter.dart';
+import 'package:news_business/news_business.dart';
 
 /// Usage: the news API returns an article with title "<title>" and content "<content>"
 Future<void> theNewsApiReturnsAnArticleWithTitleAndContent(
@@ -23,18 +24,16 @@ Future<void> theNewsApiReturnsAnArticleWithTitleAndContent(
     ],
   );
 
-  // const route = 'top-headlines?country=us&category=business';
-  const route = 'top-headlines';
-  // const route = 'top-headlines?country=us&category=business&apiKey=c575638a539e461c840f0f47d5ea89d7';
+  const route = 'top-headlines?country=us&category=business';
 
-  di.inject<DioAdapter>()
+  final dio = di.inject<Dio>(instanceName: "dio_client");
+  final adapter = DioAdapter(
+      dio: dio,
+      matcher: const UrlRequestMatcher(matchMethod: true),
+      printLogs: true);
+  adapter
     ..onGet(
       route,
       (server) => server.reply(200, data.toJson()),
-      // queryParameters: {
-      //   "country":"us",
-      //   "category":"business",
-      //   "apiKey":"c575638a539e461c840f0f47d5ea89d7",
-      // }
     );
 }
