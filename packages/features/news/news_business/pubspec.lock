@@ -581,7 +581,7 @@ packages:
     source: hosted
     version: "1.0.0"
   news_presentation:
-    dependency: transitive
+    dependency: "direct main"
     description:
       path: "../news_presentation"
       relative: true

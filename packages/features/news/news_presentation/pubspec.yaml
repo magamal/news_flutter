@@ -31,6 +31,10 @@ dependencies:
   retrofit: ">=4.0.0 <5.0.0"
   dio: ^5.5.0+1
 
+
+  core_ui:
+    path: ../../../core_ui
+
   news_business:
     path: ../news_business
 
@@ -57,6 +61,7 @@ dev_dependencies:
   bdd_widget_test: ^1.7.4
   analyzer: 6.11.0
   retrofit_generator: ^9.0.0
+  bloc_test: ^9.1.4
 
 
 flutter:

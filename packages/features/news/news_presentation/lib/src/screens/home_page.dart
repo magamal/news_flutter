@@ -79,7 +79,14 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
           child: const Text("Retry")));
 
   articleItem(NewsArticle article) => Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
-        child: Text(article.title ?? ""),
-      );
+    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(article.title ?? "", style: const TextStyle(fontWeight: FontWeight.bold)),
+        const SizedBox(height: 4),
+        Text(article.content ?? "", style: const TextStyle(color: Colors.grey)),
+      ],
+    ),
+  );
 }

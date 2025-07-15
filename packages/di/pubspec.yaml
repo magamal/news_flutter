@@ -36,6 +36,9 @@ dependencies:
   news_business:
     path: ../features/news/news_business
 
+  core_ui:
+    path: ../core_ui
+
 
 
 dev_dependencies:

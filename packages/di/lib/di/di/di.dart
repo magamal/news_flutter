@@ -34,5 +34,6 @@ T inject<T extends Object>({String? instanceName}) {
 @visibleForTesting
 Future<void> configureTestingDependencies() async {
   const environment = Environment.test;
-  configureDependencies(environment: environment);
+  getIt.allowReassignment = true;
+  await configureDependencies(environment: environment);
 }

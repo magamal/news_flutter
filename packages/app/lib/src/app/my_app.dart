@@ -2,6 +2,7 @@ import 'package:app/src/routes/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:core_ui/src/resources/app_colors.dart';
+import 'package:core_ui/src/resources/resources_index.dart';
 import 'package:localization/generated/l10n.dart';
 
 
