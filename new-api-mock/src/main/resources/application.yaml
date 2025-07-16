@@ -1,9 +1,0 @@
-wiremock:
-  mapping:
-    path: stubs
-  port: 8090
-
-spring:
-  web:
-    resources:
-      static-locations: classpath:/static

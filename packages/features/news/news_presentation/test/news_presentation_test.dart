@@ -29,7 +29,6 @@ void main() {
       await iSeeTheArticleTitleAndContentOnScreen(
           tester, 'Article Title 1', 'content 1');
     });
-    return;
     testWidgets(
         '''Outline: Display list of news when fetch is successful ('Article Title 2 ', 'content 2')''',
         (tester) async {

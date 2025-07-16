@@ -41,6 +41,7 @@ dependencies:
   localization: 1.0.0+1
 
   media_presentation: 1.0.0+1
+  navigation: 1.0.0+1
 
 
 

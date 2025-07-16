@@ -37,6 +37,7 @@ dependencies:
   news_business: 1.0.0+1
   localization: 1.0.0+1
   di: 1.0.0+1
+  navigation: 1.0.0+1
 
 
 
