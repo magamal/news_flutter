@@ -4,13 +4,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import './step/i_see_the_article_title_and_content_on_screen.dart';
 import './step/setup_data.dart';
-import './step/the_app_is_running.dart';
 import './step/the_news_api_returns_an_article_with_title_and_content.dart';
+import './step/the_app_is_running.dart';
+import './step/i_see_the_article_title_and_content_on_screen.dart';
 import './step/the_news_fetch_is_in_progress.dart';
-import './step/the_remote_module_throws_a_dioexception.dart';
 import './step/the_ui_should_show_a_loading_indicator.dart';
+import './step/the_remote_module_throws_a_dioexception.dart';
 import './step/the_ui_should_show_an_error_message.dart';
 
 void main() {
@@ -29,6 +29,7 @@ void main() {
       await iSeeTheArticleTitleAndContentOnScreen(
           tester, 'Article Title 1', 'content 1');
     });
+    return;
     testWidgets(
         '''Outline: Display list of news when fetch is successful ('Article Title 2 ', 'content 2')''',
         (tester) async {

@@ -184,14 +184,21 @@ packages:
   core_domain:
     dependency: "direct main"
     description:
-      path: "../../../core_domain"
+      path: "../../../core/core_domain"
+      relative: true
+    source: path
+    version: "1.0.0+1"
+  core_testing:
+    dependency: "direct overridden"
+    description:
+      path: "../../../core/core_testing"
       relative: true
     source: path
     version: "1.0.0+1"
   core_ui:
     dependency: "direct overridden"
     description:
-      path: "../../../core_ui"
+      path: "../../../core/core_ui"
       relative: true
     source: path
     version: "1.0.0+1"
@@ -390,14 +397,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.0"
-  http_mock_adapter:
-    dependency: "direct dev"
-    description:
-      name: http_mock_adapter
-      sha256: "46399c78bd4a0af071978edd8c502d7aeeed73b5fb9860bca86b5ed647a63c1b"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.6.1"
   http_multi_server:
     dependency: transitive
     description:

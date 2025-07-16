@@ -28,14 +28,11 @@ dependencies:
   dio: ^5.5.0+1
 
   app: 1.0.0+1
-
   news_presentation: 1.0.0+1
-
   news_business: 1.0.0+1
-
   core_ui: 1.0.0+1
-
   core_domain: 1.0.0+1
+  core_testing: 1.0.0+1
 
 
 

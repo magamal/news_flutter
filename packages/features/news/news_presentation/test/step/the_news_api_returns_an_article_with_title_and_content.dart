@@ -1,7 +1,6 @@
+import 'package:core_testing/core_testing.dart';
 import 'package:di/di/di/di.dart' as di;
-import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:http_mock_adapter/http_mock_adapter.dart';
 import 'package:news_business/news_business.dart';
 
 /// Usage: the news API returns an article with title "<title>" and content "<content>"
@@ -25,15 +24,6 @@ Future<void> theNewsApiReturnsAnArticleWithTitleAndContent(
   );
 
   const route = 'top-headlines?country=us&category=business';
-
-  final dio = di.inject<Dio>(instanceName: "dio_client");
-  final adapter = DioAdapter(
-      dio: dio,
-      matcher: const UrlRequestMatcher(matchMethod: true),
-      printLogs: true);
-  adapter
-    ..onGet(
-      route,
-      (server) => server.reply(200, data.toJson()),
-    );
+  di.inject<HttpMock>()
+    ..mockGet(path: route, queryParams: {}, response: data.toJson());
 }

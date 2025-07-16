@@ -50,7 +50,6 @@ dev_dependencies:
   bdd_widget_test: ^1.7.4
   analyzer: 6.11.0
   retrofit_generator: ^9.0.0
-  http_mock_adapter: ^0.6.1
 
 
 flutter:

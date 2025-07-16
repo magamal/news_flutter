@@ -1,14 +1,13 @@
 import 'dart:async';
 
+import 'package:app/app_library.dart' as app;
+import 'package:core_domain/core_domain.dart' as coreDomain;
+import 'package:core_testing/core_testing.dart' as coreTesting;
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
-import 'package:app/app_library.dart' as app;
-import 'package:news_presentation/news_presentation.dart' as news_presentation;
-import 'package:news_business/news_business.dart' as news_business;
-import 'package:core_domain/core_domain.dart' as core_domain;
-
-
+import 'package:news_business/news_business.dart' as newsBusiness;
+import 'package:news_presentation/news_presentation.dart' as newsPresentation;
 
 final getIt = GetIt.instance;
 
@@ -17,12 +16,15 @@ final getIt = GetIt.instance;
   preferRelativeImports: true, // default
   asExtension: true,
 )
-Future<void> configureDependencies({String? environment = Environment.dev}) async {
-    // getIt.allowReassignment = true;
-    await core_domain.configureCoreDomainDependencies(getIt, environment);
-    await app.configureAppDependencies(getIt, environment);
-    await news_presentation.configureNewsPresentationDependencies(getIt, environment);
-    await news_business.configureNewsBusinessDependencies(getIt, environment);
+Future<void> configureDependencies(
+    {String? environment = Environment.dev}) async {
+  // getIt.allowReassignment = true;
+  await coreDomain.configureCoreDomainDependencies(getIt, environment);
+  await app.configureAppDependencies(getIt, environment);
+  await newsPresentation.configureNewsPresentationDependencies(
+      getIt, environment);
+  await newsBusiness.configureNewsBusinessDependencies(getIt, environment);
+  await coreTesting.configureCoreTestingDependencies(getIt, environment);
 }
 
 Future resetDi() async {
