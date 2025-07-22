@@ -1,9 +1,11 @@
+import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:localization/generated/l10n.dart';
 import 'package:news_presentation/src/bloc/news_list_bloc.dart';
-import 'package:news_business/src/domain/models/news_article.dart';
 import 'package:di/di/di.dart';
+import 'package:news_presentation/src/widgets/dropdown_menu_widget.dart';
+import 'package:news_presentation/src/widgets/news_list_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   static const String routeName = '/';
@@ -43,14 +45,22 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
 
   @override
   Widget build(BuildContext context) {
+    final themeMode = context.watch<ThemeBloc>().state.themeMode;
+
     return Scaffold(
+      appBar: AppBar(
+        title: Text(S.current.appName),
+        actions: [
+          ThemeModeDropdown(currentThemeMode: themeMode),
+        ],
+      ),
       body: BlocConsumer<NewsListBloc, NewsListState>(
         bloc: bloc,
         listener: (context, state) {},
         builder: (context, state) => state.map(
           initial: (state) => initialState(),
           loading: (state) => loadingState(),
-          success: (state) => newsList(state.articles),
+          success: (state) => newsListWidget(state.articles),
           error: (state) => errorState(state.message),
         ),
       ),
@@ -61,32 +71,10 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
 
   loadingState() => const Center(child: CircularProgressIndicator());
 
-  newsList(List<NewsArticle> articles) => ListView.separated(
-        itemCount: articles.length,
-        itemBuilder: (context, index) => articleItem(articles[index]),
-        separatorBuilder: (context, index) => const Divider(
-          thickness: 1,
-          endIndent: 8,
-          indent: 8,
-        ),
-      );
-
   errorState(String message) => Center(
       child: TextButton(
           onPressed: () {
             bloc.add(const NewsListEvent.fetchNews());
           },
           child: const Text("Retry")));
-
-  articleItem(NewsArticle article) => Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(article.title ?? "", style: const TextStyle(fontWeight: FontWeight.bold)),
-        const SizedBox(height: 4),
-        Text(article.content ?? "", style: const TextStyle(color: Colors.grey)),
-      ],
-    ),
-  );
 }

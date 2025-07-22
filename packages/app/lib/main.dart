@@ -6,7 +6,7 @@ import 'package:core_ui/src/resources/resources_index.dart';
 void main() async {
   await configureDependencies();
   WidgetsFlutterBinding.ensureInitialized();
-  final app =await di.inject<MyAppProvider>();
+  final app = await di.inject<MyAppProvider>();
   runApp(app.getMyApp());
 }
 
