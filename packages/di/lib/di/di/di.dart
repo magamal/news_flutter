@@ -8,6 +8,7 @@ import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:news_business/news_business.dart' as newsBusiness;
 import 'package:news_presentation/news_presentation.dart' as newsPresentation;
+import 'package:core_ui/core_ui.dart' as coreUi;
 
 final getIt = GetIt.instance;
 
@@ -25,6 +26,7 @@ Future<void> configureDependencies(
       getIt, environment);
   await newsBusiness.configureNewsBusinessDependencies(getIt, environment);
   await coreTesting.configureCoreTestingDependencies(getIt, environment);
+  await coreUi.configureCoreUiDependencies(getIt, environment);
 }
 
 Future resetDi() async {
