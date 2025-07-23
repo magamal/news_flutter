@@ -19,8 +19,6 @@ dependencies:
   go_router: ^13.2.0
   flutter_svg: ^2.0.10
   syncfusion_flutter_charts: ^27.2.5
-  shared_preferences: ^2.2.3
-
 
 
   # shared
@@ -31,6 +29,10 @@ dependencies:
   logger: ^2.0.2+1
   retrofit: ">=4.0.0 <5.0.0"
   dio: ^5.5.0+1
+
+
+  shared_pref: 1.0.0+1
+  di:  1.0.0+1
 
 
 

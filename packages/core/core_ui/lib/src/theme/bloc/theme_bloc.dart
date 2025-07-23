@@ -1,4 +1,4 @@
-import 'package:core_ui/src/repo/theme_repo.dart';
+import 'package:core_ui/src/theme/repo/theme_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -31,14 +31,3 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
     emit(ThemeState(themeMode: event.themeMode));
   }
 }
-
-// @injectable
-// class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
-//   ThemeBloc() : super(const ThemeState(themeMode: ThemeMode.light)) {
-//     on<_ThemeChanged>(_onThemeChanged);
-//   }
-//
-//   void _onThemeChanged(_ThemeChanged event, Emitter<ThemeState> emit) {
-//     emit(ThemeState(themeMode: event.themeMode));
-//   }
-// }
