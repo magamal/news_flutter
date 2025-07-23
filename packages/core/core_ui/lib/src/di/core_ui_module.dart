@@ -1,5 +1,5 @@
-import 'package:core_ui/src/bloc/theme_bloc.dart';
-import 'package:core_ui/src/repo/theme_repo.dart';
+import 'package:core_ui/src/theme/bloc/theme_bloc.dart';
+import 'package:core_ui/src/theme/repo/theme_repo.dart';
 import 'package:injectable/injectable.dart';
 
 @module

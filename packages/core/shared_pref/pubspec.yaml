@@ -1,4 +1,4 @@
-name: di
+name: shared_pref
 description: "A new Flutter project."
 
 version: 1.0.0+1
@@ -12,10 +12,9 @@ dependencies:
     sdk: flutter
 
   # current module dependencies
-  cupertino_icons: ^1.0.6
   get: ^4.6.6
   json_annotation: ^4.9.0
-  syncfusion_flutter_charts: ^27.2.5
+  shared_preferences: ^2.2.3
 
 
 
@@ -24,17 +23,7 @@ dependencies:
   get_it: ^7.7.0
   freezed: ^2.4.7
   freezed_annotation: ^2.4.1
-  retrofit: ">=4.0.0 <5.0.0"
-  dio: ^5.5.0+1
 
-  # paths
-  app: 1.0.0+1
-  news_presentation: 1.0.0+1
-  news_business: 1.0.0+1
-  core_ui: 1.0.0+1
-  core_domain: 1.0.0+1
-  core_testing: 1.0.0+1
-  shared_pref: 1.0.0+1
 
 
 
@@ -48,10 +37,7 @@ dev_dependencies:
   #  flutter_gen_runner: ^5.9.0
   json_serializable: ^6.7.1
   injectable_generator: ^2.4.1
-  mockito: 5.4.4
-  bdd_widget_test: ^1.7.4
   analyzer: 6.11.0
-  retrofit_generator: ^9.0.0
 
 
 flutter:
