@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:shared_pref/shared_pref_manager.dart';
+import 'package:shared_pref/repo/SharedPrefRepo.dart';
 import 'package:di/di/di.dart' as di;
 
 class ThemeRepository {
-  final SharedPrefsManager sharedPrefsManager = di.inject<SharedPrefsManager>();
+  final SharedPrefRepo sharedPrefRepo = di.inject<SharedPrefRepo>();
 
   Future<ThemeMode> loadThemeMode() async {
-    final value = await sharedPrefsManager.loadThemeMode();
+    final value = await sharedPrefRepo.loadThemeMode();
 
     switch (value) {
       case 'light':
@@ -21,10 +21,10 @@ class ThemeRepository {
 
   Future<void> saveThemeMode(ThemeMode mode) async {
     final value = switch (mode) {
-      ThemeMode.light => 'light',
-      ThemeMode.dark => 'dark',
-      ThemeMode.system => 'system',
+      ThemeMode.light => ThemeMode.light.name,
+      ThemeMode.dark => ThemeMode.dark.name,
+      ThemeMode.system => ThemeMode.system.name,
     };
-    await sharedPrefsManager.saveThemeMode(value);
+    await sharedPrefRepo.saveThemeMode(value);
   }
 }

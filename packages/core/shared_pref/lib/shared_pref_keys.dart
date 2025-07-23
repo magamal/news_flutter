@@ -1,3 +1,5 @@
-class SharedPrefKeys{
-  static const themeModeKey = 'theme_mode';
+enum SharedPrefKeys {
+  themeMode;
+
+  String get value => "theme_mode";
 }

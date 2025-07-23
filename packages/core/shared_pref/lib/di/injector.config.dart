@@ -11,8 +11,8 @@
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
-import '../shared_pref_manager.dart' as _i367;
-import 'shared_pref_module.dart' as _i451;
+import '../repo/shared_pref_repo_impl.dart' as _i417;
+import '../repo/SharedPrefRepo.dart' as _i335;
 
 // initializes the registration of main-scope dependencies inside of GetIt
 _i174.GetIt $initGetIt(
@@ -25,13 +25,6 @@ _i174.GetIt $initGetIt(
     environment,
     environmentFilter,
   );
-  final sharedPrefsModule = _$SharedPrefsModule();
-  gh.factory<_i367.SharedPrefsManager>(() => _i367.SharedPrefsManager());
-  gh.lazySingleton<_i367.SharedPrefsManager>(
-    () => sharedPrefsModule.sharedPrefManager(),
-    instanceName: 'shared_pref_manager',
-  );
+  gh.factory<_i335.SharedPrefRepo>(() => _i417.SharedPrefRepoImpl());
   return getIt;
 }
-
-class _$SharedPrefsModule extends _i451.SharedPrefsModule {}

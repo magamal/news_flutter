@@ -1,5 +1,4 @@
 import 'package:app/src/navigation/app_router.dart';
-import 'package:app/src/routes/app_router.dart';
 import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

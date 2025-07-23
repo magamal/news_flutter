@@ -5,9 +5,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:localization/generated/l10n.dart';
 import 'package:navigation/navigation.dart';
-import 'package:news_business/src/domain/models/news_article.dart';
 import 'package:news_presentation/src/bloc/news_list_bloc.dart';
-import 'package:di/di/di.dart';
+import 'package:news_presentation/src/widgets/dropdown_menu_widget.dart';
+import 'package:news_presentation/src/widgets/news_list_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
