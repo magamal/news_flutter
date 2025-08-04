@@ -4,7 +4,6 @@ import 'package:news_business/src/data/repositories/data_source.dart';
 import 'package:news_business/src/domain/models/news_article.dart';
 import 'package:news_business/src/domain/repositories/news_repository.dart';
 import 'package:core_domain/src/base_domain/base_data_repository.dart';
-import 'package:core_domain/src/base/success_failure_result.dart';
 
 @Injectable(as: NewsRepository)
 class NewsRepositoryImpl implements NewsRepository {
@@ -13,7 +12,7 @@ class NewsRepositoryImpl implements NewsRepository {
   NewsRepositoryImpl(this.remoteDataSource);
 
   @override
-  Future<SuccessFailureResult<List<NewsArticle>>> fetchNews() async =>
+  Future<List<NewsArticle>> fetchNews() async =>
       safeCall(() async {
         return await remoteDataSource.fetchNews().then((response) =>
             (response.articles ?? [])

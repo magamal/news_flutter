@@ -4,8 +4,8 @@ import 'package:core_ui/src/resources/resources_index.dart';
 
 
 void main() async {
+  await WidgetsFlutterBinding.ensureInitialized();
   await configureDependencies();
-  WidgetsFlutterBinding.ensureInitialized();
   final app = await di.inject<MyAppProvider>();
   runApp(app.getMyApp());
 }
