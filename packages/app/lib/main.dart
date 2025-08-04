@@ -1,8 +1,15 @@
-import 'package:app/src/app/my_app.dart';
-import 'package:app/src/di/injector.dart';
 import 'package:flutter/material.dart';
+import 'package:di/di/di.dart' as di;
+import 'package:core_ui/src/resources/resources_index.dart';
+
 
 void main() async {
+  await WidgetsFlutterBinding.ensureInitialized();
   await configureDependencies();
-  runApp(const MyApp());
+  final app = await di.inject<MyAppProvider>();
+  runApp(app.getMyApp());
+}
+
+configureDependencies() async {
+  await di.configureDependencies();
 }
