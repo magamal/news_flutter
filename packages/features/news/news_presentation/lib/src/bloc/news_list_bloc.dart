@@ -7,6 +7,7 @@ import 'package:news_business/news_business.dart';
 part 'news_list_bloc.freezed.dart';
 part 'news_list_event.dart';
 part 'news_list_state.dart';
+part 'event_handling/fetch_news_event_handling.dart';
 
 @injectable
 class NewsListBloc extends Bloc<NewsListEvent, NewsListState> {
@@ -14,19 +15,5 @@ class NewsListBloc extends Bloc<NewsListEvent, NewsListState> {
 
   NewsListBloc(this._newsRepository) : super(const NewsListState.initial()) {
     on<_FetchNews>(_fetchNews);
-  }
-
-  Future<void> _fetchNews(_FetchNews event, Emitter<NewsListState> emit) async {
-    emit(const NewsListState.loading());
-    try {
-      await _newsRepository
-          .fetchNews()
-          .then((articles) => emit(NewsListState.success(articles)));
-    } on Failure catch (failure) {
-      failure.when(
-        network: (network) {},
-        app: (app) {},
-      );
-    }
   }
 }
