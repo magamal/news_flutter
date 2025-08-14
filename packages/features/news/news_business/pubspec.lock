@@ -564,6 +564,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.11.1"
+  media_business:
+    dependency: "direct overridden"
+    description:
+      path: "../../media/media_business"
+      relative: true
+    source: path
+    version: "1.0.0+1"
   media_presentation:
     dependency: "direct overridden"
     description:

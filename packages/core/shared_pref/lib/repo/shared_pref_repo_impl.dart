@@ -9,12 +9,12 @@ class SharedPrefRepoImpl extends SharedPrefRepo {
   @override
   Future<void> saveThemeMode(String mode) async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(SharedPrefKeys.themeMode.value, mode);
+    await prefs.setString(SharedPrefKeys.themeMode.path, mode);
   }
 
   @override
   Future<String?> loadThemeMode() async {
     final prefs = await SharedPreferences.getInstance();
-    return prefs.getString(SharedPrefKeys.themeMode.value);
+    return prefs.getString(SharedPrefKeys.themeMode.path);
   }
 }
