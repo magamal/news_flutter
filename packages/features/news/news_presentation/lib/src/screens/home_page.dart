@@ -65,7 +65,7 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
         builder: (context, state) => state.map(
           initial: (state) => initialState(),
           loading: (state) => loadingState(),
-          success: (state) => newsListWidget(state.articles),
+          success: (state) => NewsListWidget(state.articles),
           error: (state) => errorState(state.message),
         ),
       ),
