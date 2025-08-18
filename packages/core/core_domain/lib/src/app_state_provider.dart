@@ -1,21 +1,25 @@
-import 'package:core_domain/src/app_states.dart';
+import 'package:core_domain/src/app_status.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
 @lazySingleton
 class AppStateProvider extends ChangeNotifier {
-  AppStates _state = AppStates.authorized;
+  AppStatus _status = AppStatus.authorized;
   String? _message;
 
-  AppStates? get state => _state;
+  AppStatus get status => _status;
   String? get message => _message;
 
-  void setAppState(String msg, AppStates appState) {
-    if(_state == appState){
-      return;
-    }
-    _state = appState;
+  void setRemoteErrorState(String msg, AppStatus appStatus) {
+    _status = appStatus;
     _message = msg;
+    notifyListeners();
+  }
+
+
+  void reset() {
+    _status = AppStatus.authorized;
+    _message = null;
     notifyListeners();
   }
 }
