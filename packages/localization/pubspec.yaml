@@ -10,8 +10,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-  # current module dependencies
   cupertino_icons: ^1.0.6
   flutter_localizations:
     sdk: flutter
@@ -21,11 +19,6 @@ dependencies:
   flutter_bloc: ^8.1.3
   go_router: ^13.2.0
   flutter_svg: ^2.0.10
-  
-
-
-
-  # shared
   injectable: ^2.3.2
   get_it: ^7.7.0
   freezed: ^2.4.7
@@ -40,11 +33,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-
   flutter_lints: ^3.0.0
   build_runner: ^2.4.8
-  #  flutter_gen_runner: ^5.9.0
   json_serializable: ^6.7.1
   injectable_generator: ^2.4.1
   mockito: 5.4.4
