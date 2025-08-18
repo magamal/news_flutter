@@ -12,7 +12,9 @@ import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
-import '../app_provider.dart' as _i63;
+import '../app_state_provider.dart' as _i533;
+import '../repo/app_states_repo.dart' as _i217;
+import '../repo/app_states_repo_impl.dart' as _i157;
 import 'core_domain_module.dart' as _i255;
 
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -27,13 +29,17 @@ _i174.GetIt $initGetIt(
     environmentFilter,
   );
   final coreDomainModule = _$CoreDomainModule();
-  gh.lazySingleton<_i63.AppProvider>(() => _i63.AppProvider());
+  gh.lazySingleton<_i533.AppStateProvider>(() => _i533.AppStateProvider());
   gh.lazySingleton<String>(
     () => coreDomainModule.baseUrl,
     instanceName: 'base_url',
   );
+  gh.factory<_i217.AppStatesRepo>(() => _i157.AppStatesRepoImp());
   gh.lazySingleton<_i361.Dio>(
-    () => coreDomainModule.dio(gh<_i63.AppProvider>()),
+    () => coreDomainModule.dio(
+      gh<_i533.AppStateProvider>(),
+      gh<_i217.AppStatesRepo>(),
+    ),
     instanceName: 'dio_client',
   );
   return getIt;

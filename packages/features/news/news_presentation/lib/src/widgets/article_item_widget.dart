@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:news_business/news_business.dart';
 
 class ArticleItemWidget extends StatelessWidget {
-  NewsArticle newsArticle;
-  ArticleItemWidget(this.newsArticle, {super.key});
+  final NewsArticle newsArticle;
+  const ArticleItemWidget(this.newsArticle, {super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -5,7 +5,7 @@ void showErrorDialog(BuildContext context, String title, String message) {
     context: context,
     builder: (_) => AlertDialog(
       title: Text(title),
-      content: Text(message),
+      content: Text(message, style: TextStyle(color: Colors.black),),
       actions: [
         TextButton(
           onPressed: () => Navigator.of(context).pop(),

@@ -1,6 +1,6 @@
 enum AppStatus {
-  idle,
+  authorized,
   unauthorized,
   error,
-  appNeedsUpdate
+  noInternet
 }
