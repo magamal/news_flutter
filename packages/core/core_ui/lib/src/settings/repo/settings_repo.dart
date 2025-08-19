@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_pref/repo/SharedPrefRepo.dart';
 import 'package:di/di/di.dart' as di;
 
-class ThemeRepository {
+class SettingsRepository {
   final SharedPrefRepo sharedPrefRepo = di.inject<SharedPrefRepo>();
 
   Future<ThemeMode> loadThemeMode() async {
@@ -26,5 +26,20 @@ class ThemeRepository {
       ThemeMode.system => ThemeMode.system.name,
     };
     await sharedPrefRepo.saveThemeMode(value);
+  }
+
+  Future<Locale> loadLanguage() async {
+    final value = await sharedPrefRepo.loadLanguage();
+    switch (value) {
+      case 'ar':
+        return const Locale('ar');
+      case 'en':
+      default:
+        return const Locale('en');
+    }
+  }
+
+  Future<void> saveLanguage(Locale locale) async {
+    await sharedPrefRepo.saveLanguage(locale.languageCode);
   }
 }

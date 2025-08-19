@@ -13,18 +13,18 @@ class AppStatesRepoImp implements AppStatesRepo{
 
     if (dioError.type == DioExceptionType.connectionError ||
         dioError.error is SocketException) {
-      appProvider.setRemoteErrorState(
+      appProvider.setRemoteState(
         "No internet connection.",
         AppStatus.noInternet,
       );
     }
       if (statusCode == 401) {
-        appProvider.setRemoteErrorState(
+        appProvider.setRemoteState(
           "You are not authorized.",
           AppStatus.unauthorized,
         );
       } else if (statusCode != null && statusCode >= 400) {
-        appProvider.setRemoteErrorState(
+        appProvider.setRemoteState(
           "Something went wrong ($statusCode)",
           AppStatus.error,
         );
