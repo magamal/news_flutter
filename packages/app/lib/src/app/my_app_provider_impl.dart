@@ -12,7 +12,7 @@ class MyAppProviderImpl extends MyAppProvider {
   @override
   Widget getMyApp() =>
       BlocProvider(
-        create: (context) => di.inject<ThemeBloc>(),
+        create: (context) => di.inject<SettingsBloc>(),
         child: MyApp(),
       );
 }

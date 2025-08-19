@@ -17,4 +17,16 @@ class SharedPrefRepoImpl extends SharedPrefRepo {
     final prefs = await SharedPreferences.getInstance();
     return prefs.getString(SharedPrefKeys.themeMode.path);
   }
+
+  @override
+  Future<String?> loadLanguage() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(SharedPrefKeys.language.path);
+  }
+
+  @override
+  Future<void> saveLanguage(String locale) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(SharedPrefKeys.language.path, locale);
+  }
 }

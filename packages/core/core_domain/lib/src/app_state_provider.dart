@@ -10,7 +10,7 @@ class AppStateProvider extends ChangeNotifier {
   AppStatus get status => _status;
   String? get message => _message;
 
-  void setRemoteErrorState(String msg, AppStatus appStatus) {
+  void setRemoteState(String msg, AppStatus appStatus) {
     _status = appStatus;
     _message = msg;
     notifyListeners();

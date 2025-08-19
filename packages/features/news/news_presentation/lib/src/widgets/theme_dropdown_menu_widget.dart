@@ -42,8 +42,8 @@ class ThemeModeDropdown extends StatelessWidget {
           onChanged: (themeMode) {
             if (themeMode != null) {
               context
-                  .read<ThemeBloc>()
-                  .add(ThemeEvent.themeChanged(themeMode));
+                  .read<SettingsBloc>()
+                  .add(SettingsEvent.themeChanged(themeMode));
             }
           },
         ),

@@ -27,12 +27,13 @@ class _MyAppState extends State<MyApp> {
 
     return ChangeNotifierProvider.value(
       value: appProvider,
-      child: BlocConsumer<ThemeBloc, ThemeState>(
+      child: BlocConsumer<SettingsBloc, SettingsState>(
         listener: (context, state) {},
         builder: (context, state) {
           return MaterialApp.router(
             debugShowCheckedModeBanner: false,
             onGenerateTitle: (context) => S.current.appName,
+            locale: state.locale,
             localizationsDelegates: const [
               S.delegate,
               GlobalMaterialLocalizations.delegate,
@@ -58,7 +59,7 @@ class _MyAppState extends State<MyApp> {
                             WidgetsBinding.instance.addPostFrameCallback((_) {
                               if (status == AppStatus.noInternet) {
                                 showErrorDialog(
-                                    context, "NoInternet Connection", message ?? "");
+                                    context, "No Internet Connection", message ?? "");
                                 appProvider.reset();
                               }
                               if (status == AppStatus.unauthorized) {
