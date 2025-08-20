@@ -2,7 +2,6 @@ import 'package:app/src/navigation/app_router.dart';
 import 'package:core_domain/core_domain.dart';
 import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:core_ui/src/resources/app_colors.dart';
 import 'package:core_ui/src/resources/resources_index.dart';
@@ -27,13 +26,12 @@ class _MyAppState extends State<MyApp> {
 
     return ChangeNotifierProvider.value(
       value: appProvider,
-      child: BlocConsumer<SettingsBloc, SettingsState>(
-        listener: (context, state) {},
-        builder: (context, state) {
+      child: Consumer<AppSettingsProvider>(
+        builder: (context, settings, _) {
           return MaterialApp.router(
             debugShowCheckedModeBanner: false,
             onGenerateTitle: (context) => S.current.appName,
-            locale: state.locale,
+            locale: settings.locale,
             localizationsDelegates: const [
               S.delegate,
               GlobalMaterialLocalizations.delegate,
@@ -42,11 +40,10 @@ class _MyAppState extends State<MyApp> {
             ],
             supportedLocales: S.delegate.supportedLocales,
             color: AppColors.red,
-            themeMode: state.themeMode,
+            themeMode: settings.themeMode,
             theme: AppThemeData().lightTheme,
             darkTheme: AppThemeData().darkTheme,
             routerConfig: AppRouter.router,
-
             builder: (context, child) {
               return Navigator(
                   key: rootNavigatorKey,
@@ -71,7 +68,6 @@ class _MyAppState extends State<MyApp> {
                                 appProvider.reset();
                               }
                             });
-
                             return child!;
                           },
                         ),

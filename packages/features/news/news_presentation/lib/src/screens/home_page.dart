@@ -51,8 +51,8 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
 
   @override
   Widget build(BuildContext context) {
-    final themeMode = context.watch<SettingsBloc>().state.themeMode;
-    final settingsState = context.watch<SettingsBloc>().state.locale;
+    final themeMode = context.watch<AppSettingsProvider>().themeMode;
+    final settingsState = context.watch<AppSettingsProvider>().locale;
 
 
     return Scaffold(
