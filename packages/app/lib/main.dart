@@ -23,7 +23,7 @@ Future<void> loadEnvFile() async {
       break;
     case 'dev':
     default:
-      fileName = 'assets/env/.env.dev';
+      fileName = 'assets/env/.env';
   }
 
   await dotenv.load(fileName: fileName);

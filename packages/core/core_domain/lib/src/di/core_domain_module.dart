@@ -17,5 +17,11 @@ abstract class CoreDomainModule {
 
   @LazySingleton()
   @Named('base_url')
-  String get baseUrl => dotenv.env['BASE_URL'] ?? "https://newsapi.org/v2/";
+  String get baseUrl {
+    final url = dotenv.env['BASE_URL'];
+    if (url == null) {
+      throw Exception('BASE_URL is not set in environment variables');
+    }
+    return url;
+  }
 }
