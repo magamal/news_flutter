@@ -19,9 +19,7 @@ class LanguageDropdown extends StatelessWidget {
         ],
         onChanged: (locale) {
           if (locale != null) {
-            context
-                .read<SettingsBloc>()
-                .add(SettingsEvent.languageChanged(locale));
+            context.read<AppSettingsProvider>().changeLanguage(locale);
           }
         },
       ),
