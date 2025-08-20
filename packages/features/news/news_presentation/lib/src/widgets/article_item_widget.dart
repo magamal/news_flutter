@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:news_business/news_business.dart';
 
 class ArticleItemWidget extends StatelessWidget {
-  final NewsArticle article;
-
-  const ArticleItemWidget(this.article, {super.key});
+  final NewsArticle newsArticle;
+  const ArticleItemWidget(this.newsArticle, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,15 +12,9 @@ class ArticleItemWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            article.title ?? "",
-            style: const TextStyle(fontWeight: FontWeight.bold),
-          ),
+          Text(newsArticle.title ?? "", style: const TextStyle(fontWeight: FontWeight.bold)),
           const SizedBox(height: 4),
-          Text(
-            article.content ?? "",
-            style: const TextStyle(color: Colors.grey),
-          ),
+          Text(newsArticle.content ?? "", style: const TextStyle(color: Colors.grey)),
         ],
       ),
     );

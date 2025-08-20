@@ -1,5 +1,9 @@
 enum SharedPrefKeys {
-  themeMode;
+  themeMode("theme_mode"),
+  language("language"),
+  ;
 
-  String get value => "theme_mode";
+  final String path;
+
+  const SharedPrefKeys(this.path);
 }

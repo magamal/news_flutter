@@ -6,7 +6,8 @@ import 'package:go_router/go_router.dart';
 import 'package:localization/generated/l10n.dart';
 import 'package:navigation/navigation.dart';
 import 'package:news_presentation/src/bloc/news_list_bloc.dart';
-import 'package:news_presentation/src/widgets/dropdown_menu_widget.dart';
+import 'package:news_presentation/src/widgets/language_dropdown_menu_widget.dart';
+import 'package:news_presentation/src/widgets/theme_dropdown_menu_widget.dart';
 import 'package:news_presentation/src/widgets/news_list_widget.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -50,10 +51,13 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
 
   @override
   Widget build(BuildContext context) {
-    final themeMode = context.watch<ThemeBloc>().state.themeMode;
+    final themeMode = context.watch<AppSettingsProvider>().themeMode;
+    final settingsState = context.watch<AppSettingsProvider>().locale;
+
 
     return Scaffold(
       appBar: AppBar(
+        leading: LanguageDropdown(currentLocale: settingsState,),
         title: Text(S.current.appName),
         actions: [
           ThemeModeDropdown(currentThemeMode: themeMode),
