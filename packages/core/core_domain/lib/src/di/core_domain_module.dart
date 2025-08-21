@@ -1,7 +1,7 @@
+import 'package:core_domain/core_domain.dart';
 import 'package:core_domain/src/interceptors/app_error_interceptor.dart';
 import 'package:core_domain/src/interceptors/authentication_interceptor.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:injectable/injectable.dart';
 
 @module
@@ -17,11 +17,5 @@ abstract class CoreDomainModule {
 
   @LazySingleton()
   @Named('base_url')
-  String get baseUrl {
-    final url = dotenv.env['BASE_URL'];
-    if (url == null) {
-      throw Exception('BASE_URL is not set in environment variables');
-    }
-    return url;
-  }
+  String get baseUrl => Env.BASE_URL;
 }

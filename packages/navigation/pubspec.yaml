@@ -24,9 +24,8 @@ dev_dependencies:
   flutter_lints: ^3.0.0
   build_runner: ^2.4.8
   json_serializable: ^6.7.1
-  injectable_generator: ^2.4.1
-  mockito: 5.4.4
-  analyzer: 6.11.0
+  injectable_generator: ^2.7.0
+  analyzer: ^7.1.1
 
 
 flutter:

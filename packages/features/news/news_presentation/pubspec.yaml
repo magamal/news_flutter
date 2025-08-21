@@ -52,7 +52,7 @@ dev_dependencies:
   #  flutter_gen_runner: ^5.9.0
   json_serializable: ^6.7.1
   injectable_generator: ^2.4.1
-  mockito: 5.4.4
+#  mockito: 5.4.4
   bdd_widget_test: ^1.7.4
   analyzer: 6.11.0
   retrofit_generator: ^9.0.0

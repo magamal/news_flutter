@@ -6,8 +6,7 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:dio/dio.dart';
-import 'package:mockito/annotations.dart';
 import 'package:news_business/news_business.dart';
 
-@GenerateNiceMocks([MockSpec<NewsRemoteDataSource>(), MockSpec<Dio>()])
+// @GenerateNiceMocks([MockSpec<NewsRemoteDataSource>(), MockSpec<Dio>()])
 void main() {}
