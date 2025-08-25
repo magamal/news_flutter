@@ -9,8 +9,11 @@ scripts:
     run: melos exec dart run build_runner build --delete-conflicting-outputs
   rebuild:
     exec: |
-      melos run sync_deps
+#      melos run sync_deps
       flutter clean
       flutter pub get
       dart run build_runner build --delete-conflicting-outputs
     description: rebuild project and generate files
+  test:
+    run: melos exec --scope="*_presentation" -- flutter test
+    description: Run Dart test in all the packages

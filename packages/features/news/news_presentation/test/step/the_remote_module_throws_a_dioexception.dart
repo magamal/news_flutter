@@ -1,32 +1,11 @@
-import 'package:dio/dio.dart';
+import 'package:core_testing/core_testing.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:get_it/get_it.dart';
-import 'package:mockito/mockito.dart';
-import 'package:news_business/news_business.dart';
-
-import '../widget_test.mocks.dart';
+import 'package:di/di/di.dart' as di;
 
 
 /// Usage: the remote module throws a DioException
 Future<void> theRemoteModuleThrowsADioexception(WidgetTester tester) async {
-  final getIt = GetIt.instance;
-
-  final mockRemoteDataSource = MockNewsRemoteDataSource();
-
-  when(mockRemoteDataSource.fetchNews()).thenThrow(
-    DioException(
-      requestOptions: RequestOptions(path: '/top-headlines'),
-      type: DioExceptionType.badResponse,
-      response: Response(
-        requestOptions: RequestOptions(path: '/top-headlines'),
-        statusCode: 500,
-        statusMessage: 'Internal Server Error',
-      ),
-    ),
-  );
-
-  if (getIt.isRegistered<NewsRemoteDataSource>()) {
-    getIt.unregister<NewsRemoteDataSource>();
-  }
-  getIt.registerSingleton<NewsRemoteDataSource>(mockRemoteDataSource);
+  const route = 'top-headlines?country=us&category=business';
+  di.inject<HttpMock>()
+    ..mockGet(path: route, queryParams: {}, statusCode: 500,response: {});
 }

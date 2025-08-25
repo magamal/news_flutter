@@ -9,8 +9,12 @@ extension FetchNewsEventHandling on NewsListBloc {
           .then((articles) => emit(NewsListState.success(articles)));
     } on Failure catch (failure) {
       failure.when(
-        network: (network) {},
-        app: (app) {},
+        network: (network) {
+          emit(NewsListState.error(network.message ?? S.current.unknownError));
+        },
+        app: (app) {
+          emit(NewsListState.error(app.message ?? S.current.unknownError));
+        },
       );
     }
   }
