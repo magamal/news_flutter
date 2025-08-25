@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:news_business/news_business.dart';
+import 'package:localization/generated/l10n.dart';
+
 
 part 'news_list_bloc.freezed.dart';
 part 'news_list_event.dart';
