@@ -10,24 +10,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-  # current module dependencies
   cupertino_icons: ^1.0.6
   get: ^4.6.6
   json_annotation: ^4.9.0
-  
-
-
-
-  # shared
   injectable: ^2.3.2
   get_it: ^7.7.0
   freezed: ^2.4.7
   freezed_annotation: ^2.4.1
   retrofit: ">=4.0.0 <5.0.0"
   dio: ^5.5.0+1
-
-  # paths
   app: 1.0.0+1
   news_presentation: 1.0.0+1
   news_business: 1.0.0+1
@@ -41,16 +32,12 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-
   flutter_lints: ^3.0.0
   build_runner: ^2.4.8
-  #  flutter_gen_runner: ^5.9.0
   json_serializable: ^6.7.1
-  injectable_generator: ^2.4.1
-  mockito: 5.4.4
+  injectable_generator: ^2.7.0
   bdd_widget_test: ^1.7.4
-  analyzer: 6.11.0
+  analyzer: ^7.1.1
   retrofit_generator: ^9.0.0
 
 

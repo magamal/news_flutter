@@ -1,3 +1,4 @@
+import 'package:core_domain/core_domain.dart';
 import 'package:core_domain/src/interceptors/app_error_interceptor.dart';
 import 'package:core_domain/src/interceptors/authentication_interceptor.dart';
 import 'package:dio/dio.dart';
@@ -16,5 +17,5 @@ abstract class CoreDomainModule {
 
   @LazySingleton()
   @Named('base_url')
-  String get baseUrl => "https://newsapi.org/v2/";
+  String get baseUrl => Env.BASE_URL;
 }

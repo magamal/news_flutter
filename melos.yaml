@@ -5,8 +5,28 @@ packages:
 
 scripts:
   sync_deps: dart tools/sync_dependencies.dart
+
+  env:dev:
+    run: |
+      sed -i '' "s|@Envied(path: 'assets/env/.*'|@Envied(path: 'assets/env/.env.dev'|" packages/core/core_domain/lib/env/env.dart
+      melos run generate
+    description: Build with dev environment
+
+  env:staging:
+    run: |
+      sed -i '' "s|@Envied(path: 'assets/env/.*'|@Envied(path: 'assets/env/.env.staging'|" packages/core/core_domain/lib/env/env.dart
+      melos run generate
+    description: Build with staging environment
+
+  env:prod:
+    run: |
+      sed -i '' "s|@Envied(path: 'assets/env/.*'|@Envied(path: 'assets/env/.env.prod'|" packages/core/core_domain/lib/env/env.dart
+      melos run generate
+    description: Build with prod environment
+
   generate:
-    run: melos exec dart run build_runner build --delete-conflicting-outputs
+    run: melos exec --scope="core_domain" dart run build_runner build --delete-conflicting-outputs
+
   rebuild:
     exec: |
       melos run sync_deps
