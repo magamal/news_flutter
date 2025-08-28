@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ThemeModeDropdown extends StatelessWidget {
-  final ThemeMode currentThemeMode;
-
-  const ThemeModeDropdown({super.key, required this.currentThemeMode});
+  const ThemeModeDropdown({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final currentThemeMode = context.watch<AppSettingsProvider>().themeMode;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: DropdownButtonHideUnderline(

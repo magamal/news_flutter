@@ -1,3 +1,4 @@
+import 'package:core_ui/src/settings/app_settings_constants.dart';
 import 'package:core_ui/src/settings/repo/app_settings_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
@@ -13,18 +14,18 @@ class AppSettingsRepositoryImpl implements AppSettingsRepository {
     final value = await sharedPrefRepo.loadThemeMode();
 
     switch (value) {
-      case 'light':
+      case AppSettingsConstants.light:
         return ThemeMode.light;
-      case 'dark':
+      case AppSettingsConstants.dark:
         return ThemeMode.dark;
-      case 'system':
+      case AppSettingsConstants.system:
       default:
         return ThemeMode.system;
     }
   }
 
   @override
-  Future<void> saveThemeMode(ThemeMode mode) async {
+  Future<void> changeThemeMode(ThemeMode mode) async {
     final value = switch (mode) {
       ThemeMode.light => ThemeMode.light.name,
       ThemeMode.dark => ThemeMode.dark.name,
@@ -37,16 +38,16 @@ class AppSettingsRepositoryImpl implements AppSettingsRepository {
   Future<Locale> loadLanguage() async {
     final value = await sharedPrefRepo.loadLanguage();
     switch (value) {
-      case 'ar':
-        return const Locale('ar');
-      case 'en':
+      case AppSettingsConstants.arabic:
+        return Locale(AppSettingsConstants.arabic);
+      case AppSettingsConstants.english:
       default:
-        return const Locale('en');
+        return Locale(AppSettingsConstants.english);
     }
   }
 
   @override
-  Future<void> saveLanguage(Locale locale) async {
+  Future<void> changeLanguage(Locale locale) async {
     await sharedPrefRepo.saveLanguage(locale.languageCode);
   }
 }

@@ -511,7 +511,7 @@ packages:
     source: hosted
     version: "3.0.0"
   localization:
-    dependency: "direct overridden"
+    dependency: "direct main"
     description:
       path: "../../localization"
       relative: true

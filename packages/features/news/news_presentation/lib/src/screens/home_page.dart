@@ -1,4 +1,3 @@
-import 'package:core_ui/core_ui.dart';
 import 'package:di/di/di.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -51,16 +50,12 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
 
   @override
   Widget build(BuildContext context) {
-    final themeMode = context.watch<AppSettingsProvider>().themeMode;
-    final settingsState = context.watch<AppSettingsProvider>().locale;
-
-
     return Scaffold(
       appBar: AppBar(
-        leading: LanguageDropdown(currentLocale: settingsState,),
+        leading: LanguageDropdown(),
         title: Text(S.current.appName),
         actions: [
-          ThemeModeDropdown(currentThemeMode: themeMode),
+          ThemeModeDropdown(),
         ],
       ),
       body: BlocConsumer<NewsListBloc, NewsListState>(
