@@ -9,24 +9,24 @@ class SharedPrefRepoImpl extends SharedPrefRepo {
   @override
   Future<void> saveThemeMode(String mode) async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(SharedPrefKeys.themeMode.path, mode);
+    await prefs.setString(SharedPrefKeys.themeMode.name, mode);
   }
 
   @override
   Future<String?> loadThemeMode() async {
     final prefs = await SharedPreferences.getInstance();
-    return prefs.getString(SharedPrefKeys.themeMode.path);
+    return prefs.getString(SharedPrefKeys.themeMode.name);
   }
 
   @override
   Future<String?> loadLanguage() async {
     final prefs = await SharedPreferences.getInstance();
-    return prefs.getString(SharedPrefKeys.language.path);
+    return prefs.getString(SharedPrefKeys.language.name);
   }
 
   @override
   Future<void> saveLanguage(String locale) async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(SharedPrefKeys.language.path, locale);
+    await prefs.setString(SharedPrefKeys.language.name, locale);
   }
 }

@@ -22,10 +22,11 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    final appProvider = di.inject<AppStateProvider>();
-
-    return ChangeNotifierProvider.value(
-      value: appProvider,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider.value(value: di.inject<AppStateProvider>()),
+        ChangeNotifierProvider.value(value: di.inject<AppSettingsProvider>()),
+      ],
       child: Consumer<AppSettingsProvider>(
         builder: (context, settings, _) {
           return MaterialApp.router(
@@ -46,32 +47,22 @@ class _MyAppState extends State<MyApp> {
             routerConfig: AppRouter.router,
             builder: (context, child) {
               return Navigator(
-                  key: rootNavigatorKey,
-                  onGenerateRoute: (_) => MaterialPageRoute(
-                        builder: (_) => Consumer<AppStateProvider>(
-                          builder: (context, appProvider, _) {
-                            final status = appProvider.status;
-                            final message = appProvider.message;
-
-                            WidgetsBinding.instance.addPostFrameCallback((_) {
-                              if (status == AppStatus.noInternet) {
-                                showErrorDialog(
-                                    context, "No Internet Connection", message ?? "");
-                                appProvider.reset();
-                              }
-                              if (status == AppStatus.unauthorized) {
-                                showErrorDialog(
-                                    context, "Unauthorized", message ?? "");
-                                appProvider.reset();
-                              } else if (status == AppStatus.error) {
-                                showErrorDialog(context, "Error", message ?? "");
-                                appProvider.reset();
-                              }
-                            });
-                            return child!;
-                          },
-                        ),
-                      ));
+                key: rootNavigatorKey,
+                onGenerateRoute: (_) => MaterialPageRoute(
+                  builder: (_) => Consumer<AppStateProvider>(
+                    builder: (context, appProvider, _) {
+                      final state = appProvider.state;
+                      final message = appProvider.message;
+                      WidgetsBinding.instance.addPostFrameCallback((_) {
+                        if (state == AppStates.unauthorized) {
+                          showErrorDialog(context, "Unauthorized", message ?? "");
+                        }
+                      });
+                      return child!;
+                    },
+                  ),
+                ),
+              );
             },
           );
         },
