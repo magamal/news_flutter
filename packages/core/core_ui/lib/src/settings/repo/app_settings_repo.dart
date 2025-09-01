@@ -1,8 +1,12 @@
+import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
 
 abstract class AppSettingsRepository {
+
   Future<ThemeMode> loadThemeMode();
-  Future<void> changeThemeMode(ThemeMode mode);
+  Future changeThemeMode(SupportedThemes theme);
+
+
   Future<Locale> loadLanguage();
-  Future<void> changeLanguage(Locale locale);
+  Future changeLanguage(SupportedLanguages language);
 }

@@ -4,7 +4,7 @@ import 'package:injectable/injectable.dart';
 
 @lazySingleton
 class AppStateProvider extends ChangeNotifier {
-  AppStates? _state;
+  AppStates _state = AppStates.authorized;
   String? _message;
 
   AppStates? get state => _state;

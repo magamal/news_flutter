@@ -3,13 +3,17 @@ import 'package:core_domain/src/controller/app_states_controller.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
-@Injectable(as: AppStatesController)
+@Singleton(as: AppStatesController)
 class AppStatesControllerImp implements AppStatesController{
+  final AppStateProvider appStateProvider;
+
+  const AppStatesControllerImp(this.appStateProvider);
+
   @override
-  void setAppStates(DioException dioError, AppStateProvider appProvider) {
+  void setAppStateUnauthorized(DioException dioError) {
     final statusCode = dioError.response?.statusCode;
       if (statusCode == 401) {
-        appProvider.setAppState(
+        appStateProvider.setAppState(
           "You are not authorized.",
           AppStates.unauthorized,
         );
@@ -17,10 +21,10 @@ class AppStatesControllerImp implements AppStatesController{
     }
 
   @override
-  void setAppStateAuthorized(Response response, AppStateProvider appProvider) {
+  void setAppStateAuthorized(Response response) {
     final statusCode = response.statusCode;
     if (statusCode == 200 && response.data != null) {
-      appProvider.setAppState(
+      appStateProvider.setAppState(
         "You are authorized.",
         AppStates.authorized,
       );

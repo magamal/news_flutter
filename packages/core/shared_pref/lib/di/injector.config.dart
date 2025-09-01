@@ -25,6 +25,6 @@ _i174.GetIt $initGetIt(
     environment,
     environmentFilter,
   );
-  gh.factory<_i335.SharedPrefRepo>(() => _i417.SharedPrefRepoImpl());
+  gh.lazySingleton<_i335.SharedPrefRepo>(() => _i417.SharedPrefRepoImpl());
   return getIt;
 }
