@@ -1,15 +1,14 @@
-import 'package:core_ui/src/settings/app_settings_constants.dart';
+import 'package:core_ui/src/settings/app_settings.dart';
 import 'package:core_ui/src/settings/repo/app_settings_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
-import 'package:localization/generated/l10n.dart';
 
-@injectable
+@lazySingleton
 class AppSettingsProvider extends ChangeNotifier {
   final AppSettingsRepository _repository;
 
   ThemeMode _themeMode = ThemeMode.system;
-  Locale _locale = Locale(AppSettingsConstants.english);
+  Locale _locale = Locale(SupportedLanguages.english.name);
 
   AppSettingsProvider(this._repository) {
     _initializeSettings();
@@ -27,15 +26,12 @@ class AppSettingsProvider extends ChangeNotifier {
   }
 
   Future<void> changeTheme(ThemeMode themeMode) async {
-    await _repository.changeThemeMode(themeMode);
     _themeMode = themeMode;
     notifyListeners();
   }
 
-  Future<void> changeLanguage(Locale locale) async {
-    await _repository.changeLanguage(locale);
+  Future<void> changeLanguage(Locale local) async {
     _locale = locale;
-    await S.load(locale);
     notifyListeners();
   }
 }

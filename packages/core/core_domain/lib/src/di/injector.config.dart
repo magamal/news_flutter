@@ -12,6 +12,7 @@ import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
+import '../../core_domain.dart' as _i702;
 import '../app_state_provider.dart' as _i533;
 import '../controller/app_states_controller.dart' as _i829;
 import '../controller/app_states_controller_impl.dart' as _i138;
@@ -34,7 +35,8 @@ _i174.GetIt $initGetIt(
     () => coreDomainModule.baseUrl,
     instanceName: 'base_url',
   );
-  gh.factory<_i829.AppStatesController>(() => _i138.AppStatesControllerImp());
+  gh.singleton<_i829.AppStatesController>(
+      () => _i138.AppStatesControllerImp(gh<_i702.AppStateProvider>()));
   gh.lazySingleton<_i361.Dio>(
     () => coreDomainModule.dio(
       gh<_i533.AppStateProvider>(),

@@ -29,42 +29,40 @@ class _MyAppState extends State<MyApp> {
       ],
       child: Consumer<AppSettingsProvider>(
         builder: (context, settings, _) {
-          return MaterialApp.router(
-            debugShowCheckedModeBanner: false,
-            onGenerateTitle: (context) => S.current.appName,
-            locale: settings.locale,
-            localizationsDelegates: const [
-              S.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            supportedLocales: S.delegate.supportedLocales,
-            color: AppColors.red,
-            themeMode: settings.themeMode,
-            theme: AppThemeData().lightTheme,
-            darkTheme: AppThemeData().darkTheme,
-            routerConfig: AppRouter.router,
-            builder: (context, child) {
-              return Navigator(
-                key: rootNavigatorKey,
-                onGenerateRoute: (_) => MaterialPageRoute(
-                  builder: (_) => Consumer<AppStateProvider>(
-                    builder: (context, appProvider, _) {
-                      final state = appProvider.state;
-                      final message = appProvider.message;
-                      WidgetsBinding.instance.addPostFrameCallback((_) {
-                        if (state == AppStates.unauthorized) {
-                          showErrorDialog(context, "Unauthorized", message ?? "");
-                        }
-                      });
-                      return child!;
-                    },
-                  ),
-                ),
-              );
-            },
-          );
+          return Consumer<AppStateProvider>(builder: (context, appProvider, _) {
+            return MaterialApp.router(
+              debugShowCheckedModeBanner: false,
+              onGenerateTitle: (context) => S.current.appName,
+              locale: settings.locale,
+              localizationsDelegates: const [
+                S.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: S.delegate.supportedLocales,
+              color: AppColors.red,
+              themeMode: settings.themeMode,
+              theme: AppThemeData().lightTheme,
+              darkTheme: AppThemeData().darkTheme,
+              routerConfig: AppRouter.router,
+              builder: (context, child) {
+                return Navigator(
+                  key: rootNavigatorKey,
+                  onGenerateRoute: (_) => MaterialPageRoute(builder: (_) {
+                    final state = appProvider.state;
+                    final message = appProvider.message;
+                    WidgetsBinding.instance.addPostFrameCallback((_) {
+                      if (state == AppStates.unauthorized) {
+                        showErrorDialog(context, "Unauthorized", message ?? "");
+                      }
+                    });
+                    return child!;
+                  }),
+                );
+              },
+            );
+          });
         },
       ),
     );

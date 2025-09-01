@@ -11,7 +11,7 @@ abstract class CoreDomainModule {
   @Named('dio_client')
   Dio dio(AppStateProvider appProvider, AppStatesController appStatesController) => Dio()
     ..interceptors.addAll([
-      AuthenticationInterceptor(appProvider, appStatesController),
+      AuthenticationInterceptor(appStatesController),
       AppErrorInterceptor(),
       LogInterceptor(responseBody: true, request: true),
     ]);

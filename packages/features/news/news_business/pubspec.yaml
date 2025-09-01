@@ -35,6 +35,8 @@ dependencies:
 
   di: 1.0.0+1
 
+  core_ui: 1.0.0+1
+
 
 
 dev_dependencies:
