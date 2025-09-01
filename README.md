@@ -1,6 +1,6 @@
 # 📰 News App
 
-A **modular Flutter application** built with a simplified clean architecture approach, tailored for **CRUD-based apps** with **standalone features**.
+A **Flutter application** built with a simplified clean architecture approach, tailored for **CRUD-based apps** with **standalone features**.
 
 ---
 
@@ -12,12 +12,13 @@ A **modular Flutter application** built with a simplified clean architecture app
 - [Project Structure](#project-structure)
 - [Architecture](#about-architecture)
 - [Testing strategy](#testing-strategy)
+- [CI/CD Pipeline](#cicd-pipeline)
 
 ---
 
 ## 📖 About <a id="about"></a>
 
-The **News App** is a simple Flutter application demonstrating a **feature-based modular architecture**.  
+The **News App** is a simple Flutter application demonstrating a **feature-based architecture**.  
 It is designed to keep the codebase **scalable, testable, and easy to maintain**, while remaining **lightweight** for CRUD-focused use cases.
 
 ---
@@ -43,9 +44,12 @@ cd news_flutter
 melos bootstrap
 
 # 3) Generate needed files
+melos generate
+
+# 4) Rebuild whole project (if needed)
 melos rebuild
 
-# 4) Run the app
+# 5) Run the app
 flutter run
 ```
 
@@ -53,39 +57,42 @@ flutter run
 
 ## 🗂️ Project Structure <a id="project-structure"></a>
 
-The project follows **clean architecture principles** with a **feature-based modular structure**.
+The project follows **clean architecture principles** with a **feature-based structure**.
 
 ```
 news-app/
-├── packages/
-│   ├── app/                          # App module (main app widget, setup)
-│   ├── core/                         # Base classes and shared utilities
-│   │   ├── core_domain/              # Base domain & business logic
-│   │   ├── core_testing/             # Shared testing utilities
-│   │   ├── core_ui/                  # Shared UI setup & widgets
-│   │   ├── shared_pref/              # Shared Preferences wrapper
-│   ├── di/                           # Dependency injection setup
-│   ├── features/                     # Application features
-│   │   ├── news/                     # News feature (listing, favorites, etc.)
-│   │   │   ├── news_business/        # Business logic layer
-│   │   │   ├── news_presentation/    # Presentation layer (Bloc, UI)
-│   ├── localization/                 # i18n & localization support
-│   ├── navigation/                   # App navigation system
-│   ├── utils/                        # Utility classes
-├── melos.yaml                        # Melos workspace config
-├── pubspec.yaml                      # Dart dependencies
+├── lib/
+│   ├── app/                            # App module (main app widget, setup)
+│   ├── core/                           # Base classes and shared utilities
+│   │   ├── core_domain/                # Base domain & business logic
+│   │   ├── core_testing/               # Shared testing utilities
+│   │   ├── core_ui/                    # Shared UI setup & widgets
+│   │   └── shared_pref/                # Shared Preferences wrapper
+│   ├── di/                             # Dependency injection setup
+│   ├── features/                       # Application features
+│   │   └── news/                       # News feature (listing, favorites, etc.)
+│   │       ├── news_business/          # Business logic layer
+│   │       └── news_presentation/      # Presentation layer (Bloc, UI)
+│   ├── localization/                   # i18n & localization support
+│   └── navigation/                     # App navigation system
+├── test/                               # BDD tests (Gherkin feature files, step definitions, and supporting test utilities)
+│   ├── features/                       # feature files written in Gherkin syntax
+│   └── steps/                          # Step definitions mapping Gherkin steps to Dart code
+├── tools/                              # 
+├── melos.yaml                          # Melos configuration (workspace setup, package linking, scripts, automation)
+└── pubspec.yaml                        # Dart dependencies
 ```
 
 ---
 
 ## 🏗️ Architecture <a id="about-architecture"></a>
 
-This architecture is designed for **CRUD-based applications** with **modular, standalone features**.
-Each feature is organized as a separate module, making the project **scalable**, **maintainable**, and **easy to extend**.
+This architecture is designed for **CRUD-based applications** with **standalone features**.
+Each feature is organized as a separate package, making the project **scalable**, **maintainable**, and **easy to extend**.
 
-### 📦 Feature-Based Modular Structure
+### 📦 Feature-Based Structure
 
-Each feature lives inside the `features/` directory and is split into **two layers**:
+Each feature lives inside the `features/` package and is split into **two layers** like in this example:
 
 ```
 features/                            # Root folder for all app features
@@ -193,18 +200,35 @@ To keep things organized, tests are structured alongside features and core modul
 you could find the bdd test cases and scenarios in every **feature_presentation** module in **test** folder
 
 ```
-features/                            # 
-├── news/                            # Feature folder
-│   ├── news_business/               # 
-│   ├── news_presentation/           # Presentation layer (UI, Bloc, widgets)
-│   │   ├──test                      # Bdd test cases and scenarios
+news-app/
+├── test/ 
 ```
 
 ### 🚀 Running Tests
 
-Run all BDD tests in all **presentation modules**:
+Run all BDD tests in all **news_app**:
 
 ```bash
 melos test
 ```
+
+## 🚀 CI/CD with Fastlane <a id="cicd-pipeline"></a>
+
+This project uses **[Fastlane](https://fastlane.tools/)** to automate the CI/CD pipeline.
+
+### Pipeline Stages
+- **Analyze & Test** → Runs static analysis and unit/widget tests.
+- **Build** → Compiles Android & iOS apps.
+- **Deploy** → Publishes builds to testers or production stores.
+
+### What’s Automated
+- ✅ Running tests and code analysis
+- ✅ Building the Flutter app
+- ✅ Code signing and deployment to stores (Google Play / App Store)
+- ✅ Managing build numbers and versioning
+
+### Usage
+- Run locally:
+  ```sh
+  fastlane beta
 
