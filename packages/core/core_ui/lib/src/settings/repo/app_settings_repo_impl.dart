@@ -7,54 +7,35 @@ import 'package:shared_pref/repo/SharedPrefRepo.dart';
 class AppSettingsRepositoryImpl implements AppSettingsRepository {
 
   final SharedPrefRepo sharedPrefRepo;
-  final AppSettingsProvider appSettingsProvider;
 
-  const AppSettingsRepositoryImpl(
-      this.sharedPrefRepo, this.appSettingsProvider);
+  const AppSettingsRepositoryImpl(this.sharedPrefRepo);
 
   @override
   Future changeLanguage(SupportedLanguages language) async {
     await sharedPrefRepo.saveLanguage(language.languageCode);
-    final locale = Locale(language.languageCode);
-    appSettingsProvider.changeLanguage(locale);
   }
 
   @override
   Future changeThemeMode(SupportedThemes theme) async {
     await sharedPrefRepo.saveThemeMode(theme.name);
-    appSettingsProvider.changeTheme(theme.mapToThemeMode());
   }
 
   @override
   Future<Locale> loadLanguage() async {
     final savedLanguageString = await sharedPrefRepo.loadLanguage();
     final language = SupportedLanguages.getLanguageFromString(
-        savedLanguageString ?? SupportedLanguages.english.name);
+        savedLanguageString ?? SupportedLanguages.english.languageCode);
 
-    switch (language) {
-      case SupportedLanguages.arabic:
-        return Locale(SupportedLanguages.arabic.name);
-      case SupportedLanguages.english:
-      default:
-        return Locale(SupportedLanguages.english.name);
-    }
+    return Locale(language?.languageCode ?? SupportedLanguages.english.languageCode);
   }
 
 
   @override
-  Future<ThemeMode> loadThemeMode() async{
+  Future<ThemeMode> loadThemeMode() async {
     final savedThemeStr = await sharedPrefRepo.loadThemeMode();
     final theme = SupportedThemes.getThemeFromString(
         savedThemeStr ?? SupportedThemes.system.name);
 
-    switch (theme) {
-      case SupportedThemes.light:
-        return ThemeMode.light;
-      case SupportedThemes.dark:
-        return ThemeMode.dark;
-      case SupportedThemes.system:
-      default:
-        return ThemeMode.system;
-    }
+    return theme?.mapToThemeMode() ?? ThemeMode.system;
   }
 }
