@@ -11,13 +11,13 @@ class AppSettingsProvider extends ChangeNotifier {
   Locale _locale = Locale(SupportedLanguages.english.name);
 
   AppSettingsProvider(this._repository) {
-    _initializeSettings();
+    initializeSettings();
   }
 
   ThemeMode get themeMode => _themeMode;
   Locale get locale => _locale;
 
-  Future<void> _initializeSettings() async {
+  Future<void> initializeSettings() async {
     final mode = await _repository.loadThemeMode();
     final language = await _repository.loadLanguage();
     _themeMode = mode;
