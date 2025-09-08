@@ -13,29 +13,35 @@ class LanguageDropdown extends StatefulWidget {
 class _LanguageDropdownState extends State<LanguageDropdown> {
   @override
   Widget build(BuildContext context) {
-    final state = context.watch<AppSettingsBloc>().state;
-
-    final selectedLanguage = SupportedLanguages.values.firstWhere(
-          (language) => language.languageCode == state.locale.languageCode,
-      orElse: () => SupportedLanguages.english,
-    );
-
-    return PopupMenuButton<SupportedLanguages>(
-      icon: const Icon(Icons.language, color: Colors.white),
-      color: Theme.of(context).appBarTheme.backgroundColor,
-      initialValue: selectedLanguage,
-      onSelected: (language) {
-        context.read<AppSettingsBloc>().add(
-            AppSettingsEvent.changeLanguage(Locale(language.languageCode)));
-      },
-      itemBuilder: (context) => SupportedLanguages.values
-          .map(
-            (language) => PopupMenuItem(
-          value: language,
-          child: Text(language.name, style: TextStyle(color: Colors.white),),
+    return BlocBuilder<AppSettingsBloc, AppSettingsState>(
+        builder: (context, state) {
+      final selectedLanguage = SupportedLanguages.values.firstWhere(
+        (language) => language.languageCode == state.locale.languageCode,
+        orElse: () => SupportedLanguages.english,
+      );
+      return DropdownButtonHideUnderline(
+        child: DropdownButton<SupportedLanguages>(
+          icon: const Icon(Icons.language, color: Colors.white),
+          dropdownColor: Theme.of(context).appBarTheme.backgroundColor,
+          value: selectedLanguage,
+          items: SupportedLanguages.values
+              .map(
+                (language) => DropdownMenuItem(
+                  value: language,
+                  child: Text(
+                    language.name,
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              )
+              .toList(),
+          onChanged: (language) {
+            if (language == null) return;
+            context.read<AppSettingsBloc>().add(
+                AppSettingsEvent.changeLanguage(Locale(language.languageCode)));
+          },
         ),
-      )
-          .toList(),
-    );
+      );
+    });
   }
 }

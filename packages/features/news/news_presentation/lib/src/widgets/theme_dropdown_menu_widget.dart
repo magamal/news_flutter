@@ -25,12 +25,9 @@ class ThemeModeDropdown extends StatelessWidget {
               items: SupportedThemes.values.map((theme) {
                 return DropdownMenuItem(
                   value: theme,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Text(
-                      theme.name,
-                      style: const TextStyle(color: Colors.white),
-                    ),
+                  child: Text(
+                    theme.name,
+                    style: const TextStyle(color: Colors.white),
                   ),
                 );
               }).toList(),
