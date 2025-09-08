@@ -1,10 +1,12 @@
+import 'package:core_ui/core_ui.dart';
 import 'package:di/di/di.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:localization/generated/l10n.dart';
 import 'package:navigation/navigation.dart';
-import 'package:news_presentation/src/bloc/news_list_bloc.dart';
+import 'package:news_presentation/src/bloc/app_settings/app_settings_bloc.dart';
+import 'package:news_presentation/src/bloc/news_list/news_list_bloc.dart';
 import 'package:news_presentation/src/widgets/language_dropdown_menu_widget.dart';
 import 'package:news_presentation/src/widgets/theme_dropdown_menu_widget.dart';
 import 'package:news_presentation/src/widgets/news_list_widget.dart';
@@ -14,8 +16,15 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => inject<NewsListBloc>(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => AppSettingsBloc(context.read<AppSettingsProvider>()),
+        ),
+        BlocProvider(
+          create: (context) => inject<NewsListBloc>(),
+        ),
+      ],
       child: const HomeScreenContent(),
     );
   }

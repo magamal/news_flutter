@@ -27,11 +27,21 @@ class AppSettingsProvider extends ChangeNotifier {
 
   Future<void> changeTheme(ThemeMode themeMode) async {
     _themeMode = themeMode;
+    final themeEnum = SupportedThemes.values.firstWhere(
+          (theme) => theme.mapToThemeMode() == themeMode,
+      orElse: () => SupportedThemes.system,
+    );
+    await _repository.changeThemeMode(themeEnum);
     notifyListeners();
   }
 
-  Future<void> changeLanguage(Locale local) async {
+  Future<void> changeLanguage(Locale locale) async {
     _locale = locale;
+    final languageEnum = SupportedLanguages.values.firstWhere(
+          (language) => language.languageCode == locale.languageCode,
+      orElse: () => SupportedLanguages.english,
+    );
+    await _repository.changeLanguage(languageEnum);
     notifyListeners();
   }
 }

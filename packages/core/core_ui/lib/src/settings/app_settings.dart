@@ -11,9 +11,10 @@ enum SupportedLanguages {
 
   const SupportedLanguages(this.languageCode, {this.defaultLanguage});
 
-  static SupportedLanguages? getLanguageFromString(String languageString) {
-    return SupportedLanguages.values
-        .firstWhereOrNull((theme) => theme.name == languageString);
+  static SupportedLanguages? getLanguageFromString(String languageCode) {
+    return SupportedLanguages.values.firstWhereOrNull(
+          (lang) => lang.languageCode == languageCode,
+    );
   }
 
 }
