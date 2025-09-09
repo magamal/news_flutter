@@ -32,7 +32,7 @@ class _LanguageDropdownState extends State<LanguageDropdown> {
           .map(
             (language) => PopupMenuItem(
           value: language,
-          child: Text(language.name),
+          child: Text(language.name, style: TextStyle(color: Colors.white),),
         ),
       )
           .toList(),
