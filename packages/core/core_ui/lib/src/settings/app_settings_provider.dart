@@ -8,7 +8,7 @@ class AppSettingsProvider extends ChangeNotifier {
   final AppSettingsRepository _repository;
 
   ThemeMode _themeMode = ThemeMode.system;
-  Locale _locale = Locale(SupportedLanguages.english.name);
+  Locale _locale = Locale(SupportedLanguages.english.languageCode);
 
   AppSettingsProvider(this._repository) {
     initializeSettings();
