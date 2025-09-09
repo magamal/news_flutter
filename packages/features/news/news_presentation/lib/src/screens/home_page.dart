@@ -62,7 +62,7 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
     return Scaffold(
       appBar: AppBar(
         leading: LanguageDropdown(),
-        title: Text(S.current.appName),
+        title: Text(S.of(context).appName),
         actions: [
           ThemeModeDropdown(),
         ],
