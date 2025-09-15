@@ -1,7 +1,7 @@
 name: news_flutter
 packages:
   - packages/**
-  - packages/app
+  - packages/my_app
 
 scripts:
   sync_deps: dart tools/sync_dependencies.dart
