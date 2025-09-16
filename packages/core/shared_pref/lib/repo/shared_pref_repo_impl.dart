@@ -1,20 +1,28 @@
 import 'package:injectable/injectable.dart';
 import 'package:shared_pref/repo/SharedPrefRepo.dart';
+import 'package:shared_pref/shared_pref_controller.dart';
 import 'package:shared_pref/shared_pref_keys.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-@Injectable(as: SharedPrefRepo)
+@LazySingleton(as: SharedPrefRepo)
 class SharedPrefRepoImpl extends SharedPrefRepo {
 
   @override
   Future<void> saveThemeMode(String mode) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(SharedPrefKeys.themeMode.value, mode);
+    await SharedPrefController.save(SharedPrefKeys.themeMode.name, mode);
   }
 
   @override
   Future<String?> loadThemeMode() async {
-    final prefs = await SharedPreferences.getInstance();
-    return prefs.getString(SharedPrefKeys.themeMode.value);
+    return SharedPrefController.load(SharedPrefKeys.themeMode.name);
+  }
+
+  @override
+  Future<String?> loadLanguage() async {
+    return SharedPrefController.load(SharedPrefKeys.language.name);
+  }
+
+  @override
+  Future<void> saveLanguage(String languageCode) async {
+    await SharedPrefController.save(SharedPrefKeys.language.name, languageCode);
   }
 }

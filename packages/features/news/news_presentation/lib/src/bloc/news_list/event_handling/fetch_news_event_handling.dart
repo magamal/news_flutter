@@ -10,10 +10,10 @@ extension FetchNewsEventHandling on NewsListBloc {
     } on Failure catch (failure) {
       failure.when(
         network: (network) {
-          emit(NewsListState.error(network.message ?? S.current.unknownError));
+          emit(NewsListState.error(failure.message ?? ""));
         },
         app: (app) {
-          emit(NewsListState.error(app.message ?? S.current.unknownError));
+          emit(NewsListState.error(failure.message ?? ""));
         },
       );
     }
