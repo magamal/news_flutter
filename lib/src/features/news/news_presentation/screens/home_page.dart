@@ -28,6 +28,7 @@ class HomeScreen extends StatelessWidget {
   }
 
   static GoRoute homeRoute() => GoRoute(
+        name: AppRoutes.newsList.name,
         path: AppRoutes.newsList.path,
         builder: (context, state) => const HomeScreen(),
       );
