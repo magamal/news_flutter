@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../core/core.dart';
-import '../../news.dart';
+import 'package:news_app/src/core/core.dart';
+import 'package:news_app/src/features/news/news.dart';
 
 class ThemeModeDropdown extends StatelessWidget {
   const ThemeModeDropdown({super.key});
@@ -26,9 +25,12 @@ class ThemeModeDropdown extends StatelessWidget {
               items: SupportedThemes.values.map((theme) {
                 return DropdownMenuItem(
                   value: theme,
-                  child: Text(
-                    theme.name,
-                    style: const TextStyle(color: Colors.white),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Text(
+                      theme.name,
+                      style: const TextStyle(color: Colors.white),
+                    ),
                   ),
                 );
               }).toList(),
@@ -46,4 +48,7 @@ class ThemeModeDropdown extends StatelessWidget {
     );
   }
 }
+
+
+
 
