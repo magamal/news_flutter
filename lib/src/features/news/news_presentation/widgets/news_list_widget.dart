@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../news.dart';
-import 'article_item_widget.dart';
+import 'package:news_app/src/features/news/news.dart';
 
 class NewsListWidget extends StatelessWidget {
   final List<NewsArticle> articles;
