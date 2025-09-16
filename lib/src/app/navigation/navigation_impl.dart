@@ -6,7 +6,7 @@ import 'app_router.dart';
 @Singleton(as: AppNavigator)
 class NavigationImpl extends AppNavigator {
   @override
-  navigateTo(AppRoutes route, params) {
-    AppRouter.router.pushNamed(route.path, pathParameters: params);
+  navigateTo(AppRoutes route, {Map<String, String>? pathParams, Object? extra}) {
+    AppRouter.router.pushNamed(route.name, pathParameters: pathParams ?? <String, String>{}, extra: extra);
   }
 }

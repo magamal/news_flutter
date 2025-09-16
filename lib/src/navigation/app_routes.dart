@@ -1,9 +1,10 @@
 enum AppRoutes {
-  newsList("/"),
-  mediaScreen("/media_screen"),
+  newsList(name: "newsList", path: "/"),
+  mediaScreen(name: "mediaScreen" , path: "/media_screen"),
   ;
 
+  final String name; // needed for pushNamed
   final String path;
 
-  const AppRoutes(this.path);
+  const AppRoutes({required this.name, required this.path});
 }
