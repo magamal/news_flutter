@@ -1,7 +1,7 @@
 part of 'failure.dart';
 
 @freezed
-class AppFailure with _$AppFailure implements Failure {
+abstract class AppFailure with _$AppFailure implements Failure {
   const factory AppFailure.unexpected(
           {@Default('An unexpected error occurred') String? message}) =
       UnexpectedAppFailure;

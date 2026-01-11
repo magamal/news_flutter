@@ -6,39 +6,38 @@ part of 'news_articles_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$NewsArticlesResponseImpl _$$NewsArticlesResponseImplFromJson(
-        Map<String, dynamic> json) =>
-    _$NewsArticlesResponseImpl(
-      status: json['status'] as String?,
-      totalResults: (json['totalResults'] as num?)?.toInt(),
-      articles: (json['articles'] as List<dynamic>?)
-          ?.map((e) => ArticleDto.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    );
+_NewsArticlesResponse _$NewsArticlesResponseFromJson(
+  Map<String, dynamic> json,
+) => _NewsArticlesResponse(
+  status: json['status'] as String?,
+  totalResults: (json['totalResults'] as num?)?.toInt(),
+  articles: (json['articles'] as List<dynamic>?)
+      ?.map((e) => ArticleDto.fromJson(e as Map<String, dynamic>))
+      .toList(),
+);
 
-Map<String, dynamic> _$$NewsArticlesResponseImplToJson(
-        _$NewsArticlesResponseImpl instance) =>
-    <String, dynamic>{
-      'status': instance.status,
-      'totalResults': instance.totalResults,
-      'articles': instance.articles,
-    };
+Map<String, dynamic> _$NewsArticlesResponseToJson(
+  _NewsArticlesResponse instance,
+) => <String, dynamic>{
+  'status': instance.status,
+  'totalResults': instance.totalResults,
+  'articles': instance.articles,
+};
 
-_$ArticleDtoImpl _$$ArticleDtoImplFromJson(Map<String, dynamic> json) =>
-    _$ArticleDtoImpl(
-      source: json['source'] == null
-          ? null
-          : SourceDto.fromJson(json['source'] as Map<String, dynamic>),
-      author: json['author'] as String?,
-      title: json['title'] as String?,
-      description: json['description'] as String?,
-      url: json['url'] as String?,
-      urlToImage: json['urlToImage'] as String?,
-      publishedAt: json['publishedAt'] as String?,
-      content: json['content'] as String?,
-    );
+_ArticleDto _$ArticleDtoFromJson(Map<String, dynamic> json) => _ArticleDto(
+  source: json['source'] == null
+      ? null
+      : SourceDto.fromJson(json['source'] as Map<String, dynamic>),
+  author: json['author'] as String?,
+  title: json['title'] as String?,
+  description: json['description'] as String?,
+  url: json['url'] as String?,
+  urlToImage: json['urlToImage'] as String?,
+  publishedAt: json['publishedAt'] as String?,
+  content: json['content'] as String?,
+);
 
-Map<String, dynamic> _$$ArticleDtoImplToJson(_$ArticleDtoImpl instance) =>
+Map<String, dynamic> _$ArticleDtoToJson(_ArticleDto instance) =>
     <String, dynamic>{
       'source': instance.source,
       'author': instance.author,
@@ -50,14 +49,8 @@ Map<String, dynamic> _$$ArticleDtoImplToJson(_$ArticleDtoImpl instance) =>
       'content': instance.content,
     };
 
-_$SourceDtoImpl _$$SourceDtoImplFromJson(Map<String, dynamic> json) =>
-    _$SourceDtoImpl(
-      id: json['id'] as String?,
-      name: json['name'] as String?,
-    );
+_SourceDto _$SourceDtoFromJson(Map<String, dynamic> json) =>
+    _SourceDto(id: json['id'] as String?, name: json['name'] as String?);
 
-Map<String, dynamic> _$$SourceDtoImplToJson(_$SourceDtoImpl instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-    };
+Map<String, dynamic> _$SourceDtoToJson(_SourceDto instance) =>
+    <String, dynamic>{'id': instance.id, 'name': instance.name};

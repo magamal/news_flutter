@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'news_article.freezed.dart';
 
 @freezed
-class NewsArticle with _$NewsArticle {
+abstract class NewsArticle with _$NewsArticle {
   const NewsArticle._();
 
   const factory NewsArticle({
@@ -20,7 +20,7 @@ class NewsArticle with _$NewsArticle {
 }
 
 @freezed
-class Source with _$Source {
+abstract class Source with _$Source {
   const Source._();
 
   const factory Source({required String? id, required String? name}) = _Source;

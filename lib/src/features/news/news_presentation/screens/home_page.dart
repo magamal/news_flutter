@@ -5,6 +5,7 @@ import 'package:news_app/src/core/core.dart';
 import 'package:news_app/src/di/di.dart';
 import 'package:news_app/src/features/news/news.dart';
 import 'package:news_app/src/navigation/app_routes.dart';
+import 'package:news_app/src/utils/logger/logger.dart';
 
 import '../../../../localization/generated/l10n.dart';
 
@@ -68,7 +69,14 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
       ),
       body: BlocConsumer<NewsListBloc, NewsListState>(
         bloc: bloc,
-        listener: (context, state) {},
+        listener: (context, state) {
+          state.maybeMap(
+              error: (state){
+                logDebug("error message from app failure: ${state.message}");
+              },
+              orElse: (){}
+          );
+        },
         builder: (context, state) => state.map(
           initial: (state) => initialState(),
           loading: (state) => loadingState(),
@@ -79,14 +87,20 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
     );
   }
 
-  initialState() => Center(child: Text(S.current.newsArticles));
+  Center initialState() => Center(child: Text(S.current.newsArticles));
 
-  loadingState() => const Center(child: CircularProgressIndicator());
+  Center loadingState() => const Center(child: CircularProgressIndicator());
 
-  errorState(String message) => Center(
-      child: TextButton(
-          onPressed: () {
-            bloc.add(const NewsListEvent.fetchNews());
-          },
-          child: const Text("Retry")));
+  Center errorState(String message) => Center(
+      child: Column(
+        children: [
+          Text(message),
+          TextButton(
+              onPressed: () {
+                bloc.add(const NewsListEvent.fetchNews());
+              },
+              child: const Text("Retry"),
+          ),
+        ],
+      ));
 }

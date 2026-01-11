@@ -24,7 +24,7 @@ It is designed to keep the codebase **scalable, testable, and easy to maintain**
 
 ## ⚙️ Setup <a id="setup"></a>
 
-1. Install **Flutter** version `3.32.8`
+1. Install **Flutter** version `3.35.7` and **Dart** version `3.9.2`
 2. Activate [Melos](https://pub.dev/packages/melos) for workspace management
 
 

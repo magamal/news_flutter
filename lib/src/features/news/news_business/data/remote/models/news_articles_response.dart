@@ -4,7 +4,7 @@ part 'news_articles_response.freezed.dart';
 part 'news_articles_response.g.dart';
 
 @freezed
-class NewsArticlesResponse with _$NewsArticlesResponse {
+abstract class NewsArticlesResponse with _$NewsArticlesResponse {
   const factory NewsArticlesResponse({
     required String? status,
     required int? totalResults,
@@ -16,7 +16,7 @@ class NewsArticlesResponse with _$NewsArticlesResponse {
 }
 
 @freezed
-class ArticleDto with _$ArticleDto {
+abstract class ArticleDto with _$ArticleDto {
   const factory ArticleDto({
     required SourceDto? source,
     required String? author,
@@ -33,7 +33,7 @@ class ArticleDto with _$ArticleDto {
 }
 
 @freezed
-class SourceDto with _$SourceDto {
+abstract class SourceDto with _$SourceDto {
   const factory SourceDto({
     required String? id,
     required String? name,
