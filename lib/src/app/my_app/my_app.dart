@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:news_app/src/app/navigation/app_router.dart';
 import 'package:news_app/src/core/core.dart';
 import 'package:news_app/src/di/di.dart' as di;
 import 'package:provider/provider.dart';
 
 import '../../localization/generated/l10n.dart';
+import '../navigation/app_router.dart' as AppRouter;
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});

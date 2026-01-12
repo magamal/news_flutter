@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:news_app/src/core/core.dart';
 import 'package:news_app/src/di/di.dart';
 import 'package:news_app/src/features/news/news.dart';
@@ -27,12 +26,6 @@ class HomeScreen extends StatelessWidget {
       child: const HomeScreenContent(),
     );
   }
-
-  static GoRoute homeRoute() => GoRoute(
-        name: AppRoutes.newsList.name,
-        path: AppRoutes.newsList.path,
-        builder: (context, state) => const HomeScreen(),
-      );
 }
 
 class HomeScreenContent extends StatefulWidget {
@@ -93,8 +86,15 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
 
   Center errorState(String message) => Center(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(message),
+          TextButton(
+            onPressed: () {
+              AppRoutes.mediaScreen.pushNamed(context);
+            },
+            child: const Text("navigate"),
+          ),
           TextButton(
               onPressed: () {
                 bloc.add(const NewsListEvent.fetchNews());

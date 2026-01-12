@@ -3,13 +3,18 @@ import 'package:news_app/src/features/media/media.dart';
 import 'package:news_app/src/features/news/news.dart';
 import 'package:news_app/src/navigation/app_routes.dart';
 
-
-class AppRouter {
-  static final GoRouter router = GoRouter(
+final GoRouter router = GoRouter(
     initialLocation: AppRoutes.newsList.path,
     routes: <RouteBase>[
-      HomeScreen.homeRoute(),
-      MediaScreen.mediaRouter(),
+      GoRoute(
+        path: AppRoutes.newsList.path,
+        name: AppRoutes.newsList.name,
+        builder: (context, state) => const HomeScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.mediaScreen.path,
+        name: AppRoutes.mediaScreen.name,
+        builder: (context, state) => const MediaScreen(),
+      ),
     ],
-  );
-}
+);

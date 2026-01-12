@@ -18,7 +18,6 @@ export 'core_ui/settings/app_settings_provider.dart';
 export 'core_ui/settings/app_settings.dart';
 export 'core_ui/settings/repo/app_settings_repo.dart';
 export 'core_ui/resources/app_colors.dart';
-export 'core_ui/my_app_provider.dart';
 
 // core_testing
 export 'core_testing/http_mock.dart';
